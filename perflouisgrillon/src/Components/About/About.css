@@ -1,0 +1,29 @@
+.pageAbout{
+    width: 100vw;
+}
+
+
+.aboutContainer{
+    position: relative;
+    color: white;
+    margin-top: 15%;
+    margin-left: 15%;
+    padding-bottom: 30%;
+    width: 80%;
+}
+
+.birthday_Title, .formation_Title, .trophies_Title, .degrees_Title{
+    font-family: var(--second-font);
+}
+.important_Item{
+    font-family: var(--bold-font);
+}
+
+
+
+
+@media screen and (min-width: 768px){
+    .aboutContainer{
+        padding-bottom: 15%;
+    }
+}

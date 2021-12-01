@@ -1,0 +1,103 @@
+.oupslog{
+    display: flex;
+    color: hsl(0, 0%,100%);
+    height: 99vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    font-family: var(--second-font);
+    letter-spacing: 2px;
+}
+
+.pageContainer{display: none;}
+
+
+@media screen and (min-width: 1025px){
+    .oupslog{
+        display:none
+    }
+
+    .pageContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;   
+    }
+
+    .logComp{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28rem;
+        flex-direction: column;
+       top: 25%;
+       left: 30%;
+    }
+
+    .logText{
+        font-family: var(--book-font);
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: bold;
+        color: hsl(0, 0%, 100%);
+        text-align: center;
+        margin-top: 0.5rem;
+        margin-left:4rem;
+    }
+
+    .formContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 28rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        background: hsla(0, 0%, 100%);
+        padding: 2rem;
+        border-radius: 4px;
+        box-shadow: 16px 16px 56px hsla(0, 0%, 0%, 0.5);
+    }
+
+    .logButton{
+        width: 105%;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: hsl(221, 83%, 53%);
+        border-radius: 4px;
+        color: hsl(0, 0%,100%);
+        border: none;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        margin-top: 0.5rem;
+    }
+    
+    .logButton:hover{
+        background-color: hsl(224, 76%, 48%);
+        cursor: pointer;
+    }
+
+    .logInput{
+        width: 100%;
+        border: 2px solid;
+        border-color:hsl(216, 12%, 84%);
+        border-radius: 4px;
+        margin-top: 0.25rem;
+    }
+        
+    .logLabel{
+        display: block;
+        font-weight: bold;
+        color: hsl(215, 14%, 34%);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    .logForm{
+        margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+        margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+    }
+}

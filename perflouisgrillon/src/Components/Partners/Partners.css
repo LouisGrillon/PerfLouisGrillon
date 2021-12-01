@@ -1,0 +1,44 @@
+.slider{
+    position: absolute;
+    width: 80%;
+    max-width: 700px;
+    overflow: hidden;
+    top: 30%;  
+    left: 25%;
+}
+
+.slider figure{
+    position: relative; 
+    width: 500%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    text-align: left;
+    animation: 30s slidy infinite;
+}
+
+.slider figure img{
+    width: 10%;
+    height: auto; 
+    float: left;
+}
+
+@keyframes slidy {
+    0% { left: 0%; }
+    10% { left: 0%; }
+    20% { left: -100%; }
+    30% { left: -100%; }
+    40% { left: -200%; }
+    50% { left: -200%; }
+    70% { left: -100%; }
+    80%{left: -100%;}
+    90%{left: 0%;}
+    100% { left: 0%; }
+}
+
+@media screen and (max-width: 767px){
+    .slider{
+        left: 10%;
+        top: 35%;
+    }
+}

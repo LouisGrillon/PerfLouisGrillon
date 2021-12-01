@@ -1,0 +1,61 @@
+:root{
+  --tw-space-y-reverse: 0;
+  --main-font:'Gotham';
+  --second-font:'LGP-Regular';
+  --medium-font:'Gotham-Medium';
+  --book-font:'Gotham-Book';
+  --lite-font:'Gotham-Lite';
+  --lite-italic:'Gotham-Lite-Italic';
+  --ultra-font:'Gotham-Ultra';
+  --bold-italic:'Gotham-Bold-Italic';
+  --bold-font:'Gotham-Bold';
+  --black-font:'Gotham-Black'
+
+}
+
+
+
+@font-face{
+   font-family: 'Gotham-Lite';
+   src: url(./Fonts/GothamHTF-Light.otf) format('opentype');
+}
+
+@font-face{
+  font-family: 'Gotham-Lite-Italic';
+  src: url(./Fonts/Gotham-ThinItalic.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Ultra';
+  src: url(./Fonts/Gotham-Ultra.ttf) format('truetype');
+} 
+
+@font-face{
+  font-family: 'Gotham-Book';
+  src: url(./Fonts/GothamHTF-Book.otf) format('opentype');
+}
+
+@font-face{
+  font-family: 'Gotham-Bold-Italic';
+  src: url(./Fonts/Gotham-BoldItalic.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Medium';
+  src: url(./Fonts/Gotham-Medium.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Bold';
+  src: url(./Fonts/Gotham-Bold.ttf) format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Black';
+  src: url(./Fonts/Gotham-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LGP-Regular';
+  src: url(./Fonts/LGP-Regular.ttf) format('truetype');
+}

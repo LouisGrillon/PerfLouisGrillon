@@ -1,0 +1,56 @@
+.welcome{
+    display: flex;
+    position: absolute;
+    width: 99.8vw;
+    left: 17%;
+    top: 20%;
+    justify-content: flex-start;
+
+}
+.link_to_home{
+  text-decoration: none;
+}
+
+.welcome_Desktop{
+  flex-direction: column;
+  background-color: inherit;
+  margin-left: 14.5%;
+  width: 810px;
+  font-family: var(--book-font);
+  flex-wrap: wrap;
+}
+
+.welcome_Paragraphs, .welcome_Title{
+  color: hsl(0, 0%, 100%);
+}
+
+.welcome_Paragraphs{
+  font-size: 1em;
+
+
+}
+
+.welcome_Title{
+  font-size: 2.3em;
+}
+
+.lgp_Welcome{
+  font-family: var(--bold-font);
+}
+
+@media screen and (max-width: 767px){
+  .welcome{
+    top: 9%;
+    left: 0;
+  }
+  
+  .welcome_Title{
+    font-size: 2em;
+  }
+
+  .welcome_Desktop{
+    margin-top: 10%;
+    margin-left: 19%;
+    font-size: .83em;
+  }
+}

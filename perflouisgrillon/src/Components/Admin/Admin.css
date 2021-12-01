@@ -1,0 +1,59 @@
+.progressBar{
+  height: 5px;
+  background-color: hsl(0, 0%, 100%);
+  margin-top: 20px;
+  border: solid hsl(0, 0%, 96%) 1px;
+  border-radius: 16px;
+}
+.percentage{
+  color: hsl(0, 0%, 100%);
+}
+
+.output{
+  color: hsl(0, 0%, 100%);
+  height: 60px;
+  font-size: 0.8rem;
+}
+.uploadPage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  width: 85%;
+  height: 60%;
+  margin-left: 7%;
+  margin-top: 5%;
+  font-family: var(--main-font);
+  color: hsl(0, 0%, 100%);
+}
+.uploadForm{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+    }
+
+.uploadInput{
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+.uploadLabel{
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid hsl(0, 0%, 100%);
+  border-radius: 50%;
+  margin: 10px auto;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.uploadLabel:hover{
+  background: hsl(0, 0%, 100%);
+  color: hsl(240, 100%, 0%);
+}
