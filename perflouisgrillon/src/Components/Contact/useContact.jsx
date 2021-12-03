@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
-require('dotenv').config()
 
-const template= process.env.REACT_APP_TEMPLATE_ID;
-const userId= process.env.REACT_APP_USER_ID;
+
+const template= import.meta.env.VITE_APP_TEMPLATE_ID;
+const userId= import.meta.env.VITE_APP_USER_ID;
 
 export const useContact = (callback, validate) => {
   const [values, setValues] = useState({

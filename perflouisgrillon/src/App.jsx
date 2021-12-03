@@ -1,5 +1,5 @@
 
-import {BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import PrivateRoute from './Components/Private/PrivateRoute';
@@ -22,19 +22,25 @@ function App() {
   return (
   <BrowserRouter>
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={Home}/>
-          <Route path="/welcome" component={Welcome}/>
-          <Route path="/contact" component={Contact}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/stages" component={Stages}/>
-          <Route path="/about" component={About} />
-          <Route path="/partners" component={Partners}/>
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/video" component={Video} />
-          <PrivateRoute path="/admin" component={Admin}/>
-          {/* <Route path="/signup" component={Signup}/> */}
-        </Switch>
+        <Routes>
+          <Route exact path="/" element={<Home />}/>
+          <Route path="/welcome" element={<Welcome />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/stages" element={<Stages />}/>
+          <Route path="/about" element={<About />} />
+          <Route path="/partners" element={<Partners />}/>
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/video" element={<Video />} />
+          <Route 
+            path="/admin" 
+            element={
+              <PrivateRoute>
+                <Admin />
+              </PrivateRoute> 
+            } 
+          />
+        </Routes>
       </div>
   </BrowserRouter> 
   );
@@ -42,3 +48,5 @@ function App() {
 
 export default App;
 
+
+{/* <Route path="/signup" element={<Signup />}/> */}

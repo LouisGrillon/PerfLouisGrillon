@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './Login.css'
 
 
@@ -10,7 +10,7 @@ export default  function Login() {
     const {login} = useAuth()
     const [error, setError]= useState('')
     const [loading, setLoading]= useState(false)
-    const history= useHistory()
+    const navigate= useNavigate()
     
     
     async function handleSubmit(e) {
@@ -19,7 +19,7 @@ export default  function Login() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/admin")
+            navigate("/admin")
         }
         catch{
         setError('Fail to log in')

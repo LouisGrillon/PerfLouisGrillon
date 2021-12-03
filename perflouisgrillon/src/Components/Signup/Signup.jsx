@@ -1,6 +1,6 @@
 import {useRef, useState} from 'react';
 import { useAuth } from '../context/AuthContext'
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import './Signup.css'
 
 export default function Register() {
@@ -11,7 +11,7 @@ export default function Register() {
     const {register} = useAuth()
     const [error, setError]= useState('')
     const [loading, setLoading]= useState(false)
-    const history= useHistory()
+    const navigate= useNavigate()
     
     async function handleSubmit(e) {
         e.preventDefault()
@@ -22,7 +22,7 @@ export default function Register() {
             setError('')
             setLoading(true)
             await register(emailRef.current.value, passwordRef.current.value)
-            history.push("/admin")
+            navigate("/admin")
         }
         catch{
         setError('Fail to create an account')
