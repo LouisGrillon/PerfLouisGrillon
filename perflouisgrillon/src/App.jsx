@@ -13,7 +13,7 @@ import Partners from './Components/Partners/Partners'
 import Gallery from './Components/Gallery/Gallery'
 import Video from './Components/Gallery/Video'
 import Admin from './Components/Admin/Admin'
-// import Signup from './Components/Signup/Signup'
+import Signup from './Components/Signup/Signup'
 
 
 
@@ -32,6 +32,7 @@ function App() {
           <Route path="/partners" element={<Partners />}/>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/video" element={<Video />} />
+          <Route path="/signup" element={<Signup />}/>
           <Route 
             path="/admin" 
             element={
@@ -49,4 +50,4 @@ function App() {
 export default App;
 
 
-{/* <Route path="/signup" element={<Signup />}/> */}
+{/*  */}

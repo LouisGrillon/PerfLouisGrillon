@@ -1,9 +1,9 @@
 import React from 'react'
 import {Navigate} from 'react-router-dom'
-import {useAuth} from '../context/AuthContext'
+import { auth} from '../../Firebase'
 
 function PrivateRoute({component: Component}) {
-    const {currentUser} = useAuth()
-    return currentUser ? <Component /> : <Navigate to='/login'/> 
+    const user = auth.currentUser
+    return user ? <Component /> : <Navigate to='/login'/> 
     }
 export default PrivateRoute

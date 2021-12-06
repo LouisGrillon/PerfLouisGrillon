@@ -1,5 +1,5 @@
 import { projectFirestore } from '../Firebase'
-import { useEffect, useState, useContext, createContext} from 'react'
+import { useEffect, useState} from 'react'
 
 function useFirestore (collection) {
         const [docs, setDocs] = useState([]);
@@ -8,11 +8,9 @@ function useFirestore (collection) {
                 .orderBy('createdAt', 'desc')
                 .onSnapshot(snap => {
                       let documents = [];
-            
                       snap.forEach(doc => {
-            documents.push({...doc.data(), id: doc.id});
+                      documents.push({...doc.data(), id: doc.id});
           });
-
           setDocs(documents);
         });
 
