@@ -10,11 +10,11 @@ function ProgressBar({file, setFile}) {
         if(url){
             setFile(null)
         }
-    }, [url])
+    }, [url, setFile])
 
     return (
         <>
-            <span className="progressBar" role="progressbar" style={{width:progress}}></span>
+            <span className="progressBar" role="progressbar" style={{width:progress + '%'}}></span>
             <span className="percentage">{progress}%</span>
         </>
     )

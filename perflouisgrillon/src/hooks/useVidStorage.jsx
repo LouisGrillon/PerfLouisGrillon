@@ -1,6 +1,7 @@
-import {projectStorage, projectFirestore, timestamp} from '../Firebase'
 import { useEffect, useState } from 'react'
-
+import {storage, timestamp, db } from '../Firebase'
+import { ref as storageRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { addDoc, collection } from 'firebase/firestore'
 
 function useVidStorage(vidfile) {
     const [progress, setProgress] = useState(0);
@@ -9,18 +10,19 @@ function useVidStorage(vidfile) {
    
     useEffect(() => {
 
-        const storageRef = projectStorage.ref(vidfile.name)
-        const collectionRef = projectFirestore.collection('videos');
+        const storageReference = storageRef(storage, vidfile.name);
+        const uploadTask = uploadBytesResumable(storageReference, vidfile);
 
-        storageRef.put(vidfile).on('state_changed', (snap) => {
+        uploadTask.on('state_changed', (snap) => {
             let percent = (snap.bytesTransferred / snap.totalBytes) * 100;
             setProgress(percent >> 0); // or Math.trunc() 
         }, (err) => {
             setError(err);
         }, async () =>{
-            const vidUrl = await storageRef.getDownloadURL();
+            const vidUrl = await getDownloadURL(storageReference);
             const createdAt = timestamp();
-            collectionRef.add({ vidUrl, createdAt});
+            const videoCollectionRef = collection(db, "videos")
+            addDoc(videoCollectionRef, {vidUrl, createdAt})
             setVidUrl(vidUrl);
         });
 

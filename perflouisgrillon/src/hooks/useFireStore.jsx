@@ -1,21 +1,34 @@
-import { projectFirestore } from '../Firebase'
 import { useEffect, useState} from 'react'
+import { db } from '../Firebase'
+import { collection, query, onSnapshot, orderBy} from 'firebase/firestore'
 
-function useFirestore (collection) {
+
+function useFirestore (collectionName) {
         const [docs, setDocs] = useState([]);
-        useEffect(() => {
-              const unsub = projectFirestore.collection(collection)
-                .orderBy('createdAt', 'desc')
-                .onSnapshot(snap => {
-                      let documents = [];
-                      snap.forEach(doc => {
-                      documents.push({...doc.data(), id: doc.id});
-          });
-          setDocs(documents);
-        });
 
-      return () => unsub();
-    }, [collection]);  
+        useEffect(() => {
+          const q = query(collection(db, "images"), orderBy('createdAt', 'desc'))
+          const unsubscribe = onSnapshot(q, (querySnap) => {
+            const documents = []
+            querySnap.forEach((doc) =>{
+              documents.push({...doc.data(), id: doc.id})
+            })
+            setDocs(documents)
+          })
+          return () => unsubscribe()
+    }, [collectionName]);  
     return { docs };
   } 
   export default useFirestore;
+
+//   const unsub = db.collection(collection)
+//   .orderBy('createdAt', 'desc')
+//   .onSnapshot(snap => {
+//         let documents = [];
+//         snap.forEach(doc => {
+//         documents.push({...doc.data(), id: doc.id});
+// });
+// setDocs(documents);
+// });
+
+// return () => unsub();
