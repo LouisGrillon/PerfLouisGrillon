@@ -20,7 +20,7 @@ function useVidStorage(vidfile) {
             setError(err);
         }, async () =>{
             const vidUrl = await getDownloadURL(storageReference);
-            const createdAt = timestamp();
+            const createdAt = timestamp;
             const videoCollectionRef = collection(db, "videos")
             addDoc(videoCollectionRef, {vidUrl, createdAt})
             setVidUrl(vidUrl);
