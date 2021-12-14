@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './Home.css'
 import Footer from '../Footer/Footer'
 import logowhite from '../../Assets/lgplogo.png'
@@ -19,6 +19,7 @@ export default function Home() {
                 <footer>
                     <Footer/>
                 </footer>
+                {/* <Outlet/> */}
             </>
         )
     
