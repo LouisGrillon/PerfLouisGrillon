@@ -15,7 +15,7 @@ function Footer() {
             </div>  
             <div className="footerBottom">
                 <span className="bottomTxt"><Link to='/contact' className="footer_contact_link">Contact</Link></span>
-                <span className="bottomTxt">&copy; Louis Grillon Performance. Tous droits réservés.</span>
+                <span className="bottomTxt">&copy; <Link to='/admin' className="footer_contact_link" >  Louis Grillon Performance. </Link> Tous droits réservés.</span>
                 <span className="bottomTxt">Marcilly-en-Villette</span>
             </div> 
         </footer>

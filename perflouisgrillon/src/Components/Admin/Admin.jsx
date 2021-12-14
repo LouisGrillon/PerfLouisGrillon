@@ -3,6 +3,9 @@ import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import ProgressBar from './ProgressBar'
 import VidProgressBar from './VidProgressBar'
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth } from '../context/AuthContext';
+import {useNavigate} from 'react-router-dom';
 import './Admin.css'
 
 function Admin() {
@@ -12,6 +15,9 @@ function Admin() {
     const [viderror, setVidError] = useState(null);
     const [file, setFile] = useState(null);
     const [vidfile, setVidFile] = useState(null);
+    const { logout } = useAuth()
+    const navigate= useNavigate()
+
 
     function changeHandler (e) {
         let selected = e.target.files[0];
@@ -38,6 +44,13 @@ function Admin() {
             setVidError('Please select a file that is a mp4 or webm');
         }
     };
+
+   async function exit (e) {
+        e.preventDefault()
+        await logout()
+        navigate('/login', {replace: true})
+
+    }
 
     return (
         <>
@@ -66,8 +79,8 @@ function Admin() {
                     { vidfile && <VidProgressBar vidfile={vidfile} setVidFile={setVidFile} /> }
                 </div>
             </form>
-
-            </div>
+            <LogoutIcon className='logout' onClick={exit} />
+        </div>
             
             <Layout/>
         <footer>

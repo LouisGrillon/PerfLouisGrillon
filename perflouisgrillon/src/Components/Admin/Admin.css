@@ -57,3 +57,14 @@
   background: hsl(0, 0%, 100%);
   color: hsl(240, 100%, 0%);
 }
+
+.logout{
+  position: absolute;
+  top: 15%;
+  right:0;
+}
+
+.logout:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
