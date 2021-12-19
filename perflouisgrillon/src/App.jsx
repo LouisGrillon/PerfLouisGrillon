@@ -10,7 +10,7 @@ import Partners from './Components/Partners/Partners'
 import Gallery from './Components/Gallery/Gallery'
 import Video from './Components/Gallery/Video'
 import PrivateRoute from './Components/Private/PrivateRoute';
-import Signup from './Components/Signup/Signup'
+// import Signup from './Components/Signup/Signup'
 import Login from './Components/Login/Login'
 import Admin from './Components/Admin/Admin'
 
@@ -28,7 +28,6 @@ function App() {
           <Route path="/partners" element={<Partners />}/>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/video" element={<Video />} />
-          <Route path="/signup" element={<Signup />}/>
           <Route path="/login" element={<Login />}/>
           <Route element={<PrivateRoute/>}>
             <Route path="/admin" element={<Admin/>} />
@@ -41,11 +40,4 @@ function App() {
 
 export default App;
 
-{/* <Route 
-path="/admin" 
-element={
-  <PrivateRoute>
-    <Admin />
-  </PrivateRoute> 
-} 
-/> */}
+  {/* <Route path="/signup" element={<Signup />}/> */}

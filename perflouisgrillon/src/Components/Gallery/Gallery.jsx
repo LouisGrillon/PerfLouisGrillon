@@ -1,6 +1,6 @@
 import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import useFireStore from '../../hooks/useFireStore'
 import CloseRounded from '@mui/icons-material/CloseRounded';
@@ -53,7 +53,6 @@ function Gallery() {
             <footer>
                 <Footer/>
             </footer>
-            {/* <Outlet /> */}
         </>
       )
 }

@@ -10,21 +10,18 @@ import buble from '../../Assets/bubulle.png';
 const fr =  [   {
     code: 'fr',
     country_name: 'FR',
-  //   country_code: 'fr',
   }]
 const eng = 
 [
     {
       code: 'en',
       country_name: 'EN',
-    //   country_code: 'gb',
     }
   ]
 
 function Layout() {
     const { t } = useTranslation()
     const currentLanguageCode = cookies.get('i18next') || 'fr'
-    // const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
 
     const [showLinks, setShowLinks]= useState(false)
     const handleShowlinks = () =>{
