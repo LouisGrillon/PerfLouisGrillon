@@ -75,7 +75,7 @@ function Layout() {
                     </li>
 
                     <li className="navbar_item slideDown_5" id="navbar_item" key='item5' alt="partners" >
-                        <Link className="navbar_link" to="partners">{t('partners')}</Link>
+                        <Link className="navbar_link" to="/partners">{t('partners')}</Link>
                     </li>
                 </ul>
                 <button className="navbar_burger" onClick={handleShowlinks}>
