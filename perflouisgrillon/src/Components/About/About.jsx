@@ -33,14 +33,14 @@ function About() {
                 <span className='description'>2010 - {t('description_part_925')} <span className="important_Item">{t('description_part_9')}</span>{t('description_part_11')}</span> <br />
                 <span className='description'>2011 - {t('description_part_9_add_2')} <span className="important_Item">{t('description_part_9')}</span>{t('description_part_11')}</span> <br />
                 <span className='description'>2015 - {t('description_part_10')} <span className="important_Item">{t('description_part_9')}</span></span> <br />
-                <span className='description'> - {t('description_part_12')} <span className="important_Item">{t('description_part_13')}</span>{t('description_part_14')}</span> <br />
-                <span className='description'> - {t('description_part_15')} </span><br />
+                <span className='description'>2015 - {t('description_part_12')} <span className="important_Item">{t('description_part_13')}</span>{t('description_part_14')}</span> <br />
+                <span className='description'>2015 - {t('description_part_15')} </span><br />
                 <span className='description'>2016 - 2017 - {t('description_part_16')} <span className="important_Item">{t('description_part_17')}</span></span> <br />
                 <span className='description'>2017 - {t('description_part_18')} <span className="important_Item">{t('description_part_19')}</span></span> <br />
-                <span className='description'> - {t('description_part_22')} <span className="important_Item">{t('description_part_23')}</span></span> <br />
+                <span className='description'>2017 - {t('description_part_22')} <span className="important_Item">{t('description_part_23')}</span></span> <br />
                 <span className='description'>2017 - 2019 - 2020 - {t('description_part_20')} <span className="important_Item">{t('description_part_21')}</span></span> <br />
                 <span className='description'>2021 - {t('description_part_24')} <span className="important_Item">{t('description_part_25')}</span></span><br />
-                <span className='description'>- n°7 <span className="important_Item">{t('description_part_25')}</span></span>
+                <span className='description'>2021 - n°7 <span className="important_Item">{t('description_part_25')}</span></span>
             </div>
 
             <div className="degrees_wrapper" >
