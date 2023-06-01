@@ -8,7 +8,7 @@ function Footer() {
     return (
         
         <footer className="footerContainer">
-                <div className="anim">HELLO ! BIENVENUE ! HELLO ! BIENVENUE ! HELLO ! BIENVENUE ! HELLO ! BIENVENUE ! HELLO ! BIENVENUE ! </div>
+                <div className="anim">HELLO ! BIENVENU ! HELLO ! BIENVENU ! HELLO ! BIENVENU ! HELLO ! BIENVENU ! HELLO ! BIENVENU ! </div>
             <div className="iconsContainer">
                 <a href="https://www.facebook.com/GrillonLouis" className="fb"><img src={fb} alt="facebook" className="iconFb"  /></a>
                 <a href="https://www.instagram.com/louisgrillon"><img src={insta} alt="instagram" className="iconInsta" /></a>
