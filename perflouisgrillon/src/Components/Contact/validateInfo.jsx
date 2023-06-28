@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 export default function validateInfo(values) {
     let errors ={};
     
@@ -5,7 +6,7 @@ export default function validateInfo(values) {
     if(!values.email) {  
         errors.email= "Entrez votre e-mail";
     } else if (!/\S+@\S+\.\S+/.test(values.email)){
-        errors.email= "Entrez un e-mail valide";
+        errors.email= {t('description_part_8')};
     }
 
     //email confirm
