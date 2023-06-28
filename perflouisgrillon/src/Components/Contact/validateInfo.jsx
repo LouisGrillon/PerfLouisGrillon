@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 export default function validateInfo(values) {
     let errors ={};
-    
+    const { t } = useTranslation()
     //email
     if(!values.email) {  
         errors.email= "Entrez votre e-mail";
