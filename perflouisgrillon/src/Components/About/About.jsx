@@ -40,7 +40,7 @@ function About() {
                 <span className='description'>2017 - {t('description_part_22')} <span className="important_Item">{t('description_part_23')}</span></span> <br />
                 <span className='description'>2017 - 2019 - 2020 - 2021 - 2022 - <span className="important_Item">{t('description_part_21')}</span></span> <br />
                 <span className='description'>2021 - {t('description_part_24')} <span className="important_Item">{t('description_part_25')}</span></span><br />
-                <span className='description'>2021 - <span>{t('description_part_9_add_2')}<span className="important_Item">{t('description_part_16')}</span>{t('description_part_17')}</span></span>
+                <span className='description'>2021 - <span>{t('description_part_9_add_2')}<span className="important_Item">{t('description_part_16')}</span>{t('description_part_17')}</span></span><br />
                 <span className='description'>2021 - n°7 <span className="important_Item">{t('description_part_25')}</span></span><br />
                 <span className='description'>2022 - n°9 <span className="important_Item">{t('description_part_25')}</span></span><br />
                 <span className='description'>2022 - <span className="important_Item">{t('description_part_8_5')}</span>{t('description_part_17')}</span><br />
