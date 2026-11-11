@@ -31,6 +31,10 @@ export default function Welcome() {
                         {t('welcome_part_13')}<br />
                         {t('welcome_part_14')}.
                         </p>
+                        
+                        <p className="welcome_Paragraphs">
+                        {t('welcome_part_19')}
+                        </p>
 
                         <p className="welcome_Paragraphs"><span className='lgp_Welcome'>Louis Grillon Performance</span>
                         {t('welcome_part_15')}
