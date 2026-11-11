@@ -23,7 +23,7 @@ function About() {
                 {t('description_part_3')} Mézières-lez-Cléry (45).</span> <br />
                 <span className='description'>2005 - {t('description_part_4')}</span> <br />
                 <span className='description'>2004 - 2016 - {t('description_part_5')} <span className="important_Item"> Les Trialistes de l'Ardoux</span> {t('and')} Trial Club Cerny</span> <br />
-                <span className='description'>2017 - 2021 {t('description_part_6')}<span className="important_Item">Horizon Monluçon</span></span><br />
+                <span className="description">2017 - 2021 Licencié à <span className="important_Item">Horizon Montluçon</span></span><br />
                 <span className='description'>2022 - {t('description_part_6')}{t('description_part_3_5')} <span className="important_Item">Trial Club Saint Gervais</span></span>
             </div>
 
