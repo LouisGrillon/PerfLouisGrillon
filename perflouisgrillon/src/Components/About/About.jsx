@@ -69,6 +69,7 @@ function About() {
                 <h2 className="degrees_Title">{t('degrees_Title')}</h2>
                 <span className='description'>2020 - {t('description_part_26')} <span className="important_Item">{t('description_part_27')}</span>{t('description_part_28')}</span> <br />
                 <span className='description'>2021 - {t('description_part_29')} <span className="important_Item">{t('description_part_30')}</span></span>
+                <span className="description">2023 - Personal Trainer - Expert Préférences Motrices <span className="important_Item">VOLODALEN</span></span><br />
             </div>
             
 
