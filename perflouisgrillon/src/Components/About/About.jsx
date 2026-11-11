@@ -46,7 +46,7 @@ function About() {
 <span className="description">2021 - 7e au classement mondial UCI.</span><br />
 <span className="description">2022 - 9e au classement mondial UCI.</span><br />
 <span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2022 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
-<span className="description">2023 - Top 6 aux Championnats du monde Élite en Trial 20 pouces.</span><br />
+<span className="description">2023 - Top 6 aux Championnats du monde Élite UCI en Trial 20 pouces.</span><br />
 <span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2023 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2023 - 3e au Championnat d'Europe Élite de BikeTrial.</span><br />
 <span className="description">2023 - 6e au classement mondial UCI.</span><br />
