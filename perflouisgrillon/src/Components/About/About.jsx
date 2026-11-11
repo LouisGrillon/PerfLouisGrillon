@@ -36,7 +36,7 @@ function About() {
 <span className="description">2015 - 3e aux Jeux Mondiaux de la Jeunesse, catégorie Cadet (U16).</span><br />
 <span className="description">2015 - Première sélection en équipe de France junior, avec surclassement depuis la catégorie Cadet.</span><br />
 <span className="description">Depuis 2015 - Inscrit sur les listes ministérielles des sportifs de haut niveau.</span><br />
-<span className="description">2016 et 2017 - Champion du monde par équipes avec l'équipe de France.</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2016 et 2017 - Champion du monde par équipes avec l'équipe de France.</span><br />
 <span className="description">2017 - Vice-champion du monde junior en Trial 20 pouces.</span><br />
 <span className="description">2017 - Entrée dans le top 10 du classement mondial UCI.</span><br />
 <span className="description">2017, 2019, 2020, 2021, 2022 et 2023 - Champion de France Élite en Trial 20 pouces.</span><br />
@@ -54,7 +54,7 @@ function About() {
 <span className="description">2025 - 10e au classement mondial UCI.</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2025 - Champion du monde Élite de BikeTrial.</span><br />
 <span className="description">2025 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
-<span className="description">2026 - Champion du monde Élite de BIKETRIAL.</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2026 - Champion du monde Élite de BikeTrial.</span><br />
 <span className="description">2026 - 3e au Championnat d'Europe Élite de BIKETRIAL.</span><br />
 
             </div>
