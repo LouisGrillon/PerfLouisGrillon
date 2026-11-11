@@ -39,8 +39,8 @@ function About() {
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2016 et 2017 - Champion du monde par équipes avec l'équipe de France.</span><br />
 <span className="description">2017 - Vice-champion du monde junior en Trial 20 pouces.</span><br />
 <span className="description">2017 - Entrée dans le top 10 du classement mondial UCI.</span><br />
-<span className="description">2017, 2019, 2020, 2021, 2022 et 2023 - Champion de France Élite en Trial 20 pouces.</span><br />
-<span className="description">2019, 2021, 2022, 2023, 2024 et 2025 - Champion de France Élite UFOLEP.</span><br />
+<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>2017, 2019, 2020, 2021, 2022 et 2023 - Champion de France Élite en Trial 20 pouces.</span><br />
+<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>2019, 2021, 2022, 2023, 2024 et 2025 - Champion de France Élite UFOLEP.</span><br />
 <span className="description">2021 - Entrée dans le top 8 du classement mondial UCI.</span><br />
 <span className="description">2021 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
 <span className="description">2021 - 7e au classement mondial UCI.</span><br />
