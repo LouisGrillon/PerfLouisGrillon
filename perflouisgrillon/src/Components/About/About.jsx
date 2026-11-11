@@ -29,21 +29,34 @@ function About() {
 
             <div className="trophies_wrapper" >
                 <h2 className="trophies_Title">{t('trophies_Title')}</h2>
-                <span className='description'>2009 - {t('description_part_8')} <span className="important_Item">{t('description_part_9')}</span>{t('description_part_9_add_1')}</span> <br />
-                <span className='description'>2010 - {t('description_part_925')} <span className="important_Item">{t('description_part_9')}</span>{t('description_part_11')}</span> <br />
-                <span className='description'>2011 - {t('description_part_9_add_2')} <span className="important_Item">{t('description_part_9')}</span>{t('description_part_11')}</span> <br />
-                <span className='description'>2015 - {t('description_part_10')} <span className="important_Item">{t('description_part_9')}</span></span> <br />
-                <span className='description'>2015 - {t('description_part_12')} <span className="important_Item">{t('description_part_13')}</span>{t('description_part_14')}</span> <br />
-                <span className='description'>2015 - {t('description_part_15')} </span><br />
-                <span className='description'>2016 - 2017 - <span className="important_Item">{t('description_part_16')}</span> {t('description_part_17')}</span> <br />
-                <span className='description'>2017 - {t('description_part_18')} <span className="important_Item">{t('description_part_19')}</span></span> <br />
-                <span className='description'>2017 - {t('description_part_22')} <span className="important_Item">{t('description_part_23')}</span></span> <br />
-                <span className='description'>2017 - 2019 - 2020 - 2021 - 2022 - <span className="important_Item">{t('description_part_21')}</span></span> <br />
-                <span className='description'>2021 - {t('description_part_24')} <span className="important_Item">{t('description_part_25')}</span></span><br />
-                <span className='description'>2021 - <span>{t('description_part_9_add_2')}<span className="important_Item">{t('description_part_16')}</span>{t('description_part_17')}</span></span><br />
-                <span className='description'>2021 - n°7 <span className="important_Item">{t('description_part_25')}</span></span><br />
-                <span className='description'>2022 - n°9 <span className="important_Item">{t('description_part_25')}</span></span><br />
-                <span className='description'>2022 - <span className="important_Item">{t('description_part_18_5')}</span>{t('description_part_17')}</span><br />
+
+<span className="description">2009 - Vainqueur des Jeux Mondiaux de la Jeunesse, catégorie Poussin (U10), pour ma première sélection.</span><br />
+<span className="description">2010 - Vice-champion des Jeux Mondiaux de la Jeunesse, catégorie Benjamin (U12).</span><br />
+<span className="description">2011 - 3e aux Jeux Mondiaux de la Jeunesse, catégorie Benjamin (U12).</span><br />
+<span className="description">2015 - 3e aux Jeux Mondiaux de la Jeunesse, catégorie Cadet (U16).</span><br />
+<span className="description">2015 - Première sélection en équipe de France junior, avec surclassement depuis la catégorie Cadet.</span><br />
+<span className="description">Depuis 2015 - Inscrit sur les listes ministérielles des sportifs de haut niveau.</span><br />
+<span className="description">2016 et 2017 - Champion du monde par équipes avec l'équipe de France.</span><br />
+<span className="description">2017 - Vice-champion du monde junior en Trial 20 pouces.</span><br />
+<span className="description">2017 - Entrée dans le top 10 du classement mondial UCI.</span><br />
+<span className="description">2017, 2019, 2020, 2021, 2022 et 2023 - Champion de France Élite en Trial 20 pouces.</span><br />
+<span className="description">2019, 2021, 2022, 2023, 2024 et 2025 - Champion de France Élite UFOLEP.</span><br />
+<span className="description">2021 - Entrée dans le top 8 du classement mondial UCI.</span><br />
+<span className="description">2021 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
+<span className="description">2021 - 7e au classement mondial UCI.</span><br />
+<span className="description">2022 - 9e au classement mondial UCI.</span><br />
+<span className="description">2022 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
+<span className="description">2023 - Top 6 aux Championnats du monde Élite en Trial 20 pouces.</span><br />
+<span className="description">2023 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
+<span className="description">2023 - 3e au Championnat d'Europe Élite de BikeTrial.</span><br />
+<span className="description">2023 - 6e au classement mondial UCI.</span><br />
+<span className="description">2024 - 8e au classement mondial UCI.</span><br />
+<span className="description">2025 - 10e au classement mondial UCI.</span><br />
+<span className="description">2025 - Champion du monde Élite de BikeTrial.</span><br />
+<span className="description">2025 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
+<span className="description">2026 - Champion du monde Élite de BikeTrial.</span><br />
+<span className="description">2026 - 3e au Championnat d'Europe Élite de BikeTrial.</span><br />
+
             </div>
 
             <div className="degrees_wrapper" >
