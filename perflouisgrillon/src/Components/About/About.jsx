@@ -52,7 +52,7 @@ function About() {
 <span className="description">2023 - 6e au classement mondial UCI.</span><br />
 <span className="description">2024 - 8e au classement mondial UCI.</span><br />
 <span className="description">2025 - 10e au classement mondial UCI.</span><br />
-<span className="description">2025 - Champion du monde Élite de BIKETRIAL.</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2025 - Champion du monde Élite de BikeTrial.</span><br />
 <span className="description">2025 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
 <span className="description">2026 - Champion du monde Élite de BIKETRIAL.</span><br />
 <span className="description">2026 - 3e au Championnat d'Europe Élite de BIKETRIAL.</span><br />
