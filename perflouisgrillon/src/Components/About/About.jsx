@@ -38,7 +38,18 @@ function About() {
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2011')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2014_europe')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2014')}</span><br />
-<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>{t('trophy_ufolep_2010_2014')}</span><br />
+<span className="description">
+  {t('trophy_ufolep_2010_2014').split(/(France|French)/gi).map((part, i) =>
+    /^(France|French)$/i.test(part) ? (
+      <span key={i} style={{
+        background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        fontWeight: "bold"
+      }}>{part}</span>
+    ) : part
+  )}
+</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2015')}</span><br />
 <span className="description">{t('trophy_2015_team')}</span><br />
 <span className="description">{t('trophy_high_level')}</span><br />
