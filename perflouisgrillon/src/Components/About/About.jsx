@@ -42,7 +42,12 @@ function About() {
   {t('trophy_2011').slice(4)}
 </span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2014_europe')}</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2014')}</span><br />
+<span className="description">
+  <span style={{ color: "#CD7F32", fontWeight: "bold" }}>
+    {t('trophy_2014').slice(0, 4)}
+  </span>
+  {t('trophy_2014').slice(4)}
+</span><br />
 <span className="description">
   {t('trophy_ufolep_2010_2014').split(/((?:2010,\s*2011,\s*2012,\s*2013\s*(?:et|and)\s*2014))/gi).map((part, i) =>
     /2010,\s*2011,\s*2012,\s*2013\s*(?:et|and)\s*2014/i.test(part) ? (
@@ -55,7 +60,12 @@ function About() {
     ) : part
   )}
 </span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2015')}</span><br />
+<span className="description">
+  <span style={{ color: "#CD7F32", fontWeight: "bold" }}>
+    {t('trophy_2015').slice(0, 4)}
+  </span>
+  {t('trophy_2015').slice(4)}
+</span><br />
 <span className="description">{t('trophy_2015_team')}</span><br />
 <span className="description">{t('trophy_high_level')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017')}</span><br />
