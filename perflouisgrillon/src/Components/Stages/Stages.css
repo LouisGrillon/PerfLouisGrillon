@@ -139,3 +139,23 @@ font-size: 1rem;
   }
 
 }
+
+/* Photos de la page Stages : affichage mobile */
+@media screen and (max-width: 767px) {
+  .cards_Container .img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .cards_Container .card_1,
+  .cards_Container .card_2,
+  .cards_Container .card_3,
+  .cards_Container .card_4 {
+    width: 76%;
+    max-width: 286px;
+    box-sizing: border-box;
+  }
+}
