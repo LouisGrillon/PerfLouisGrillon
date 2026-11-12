@@ -19,12 +19,12 @@ function About() {
 
             <div className="formation_wrapper" >
                 <h2 className="formation_Title">{t('formation_Title')}</h2>
-                <span className='description'>2004 - {t('description_part_2')} <span className="important_Item"> Trialistes de L'Ardoux</span>
+                <span className='description'>2004 - {t('formation_2004')} <span className="important_Item"> Trialistes de L'Ardoux</span>
                 {t('description_part_3')} Mézières-lez-Cléry (45).</span> <br />
                 <span className='description'>2005 - {t('description_part_4')}</span> <br />
-                <span className='description'>2004 - 2016 - {t('description_part_5')} <span className="important_Item"> Les Trialistes de l'Ardoux</span> {t('and')} Trial Club Cerny</span> <br />
-                <span className="description">2017 - 2021 Licencié à <span className="important_Item">Horizon Montluçon</span></span><br />
-                <span className='description'>2022 - {t('description_part_6')}{t('description_part_3_5')} <span className="important_Item">Trial Club Saint Gervais</span></span>
+                <span className='description'>2004 - 2016 - {t('formation_2004_2016')} <span className="important_Item"> Les Trialistes de l'Ardoux</span> {t('and')} Trial Club Cerny</span> <br />
+                <span className="description">2017 - 2021 - {t('formation_2017_2021')} <span className="important_Item">Horizon Montluçon</span></span><br />
+                <span className='description'>2022 - {t('formation_2022')}{" "} <span className="important_Item">Trial Club Saint Gervais</span></span>
             </div>
 
             <div className="trophies_wrapper" >
