@@ -69,7 +69,18 @@ function About() {
     ) : part
   )}
 </span><br />
-<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>	{t('trophy_ufolep')}</span><br />
+<span className="description">
+  {t('trophy_ufolep').split(/(2019,\s*2021,\s*2022,\s*2023,\s*2024\s*(?:et|and)\s*2025)/gi).map((part, i) =>
+    /2019,\s*2021,\s*2022,\s*2023,\s*2024\s*(?:et|and)\s*2025/i.test(part) ? (
+      <span key={i} style={{
+        background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        fontWeight: "bold"
+      }}>{part}</span>
+    ) : part
+  )}
+</span><br />
 <span className="description">{t('trophy_2021_top8')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2021_team')}</span><br />
 <span className="description">{t('trophy_2021_ranking')}</span><br />
