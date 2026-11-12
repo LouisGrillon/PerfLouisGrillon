@@ -126,17 +126,42 @@ function About() {
 </span><br />
 <span className="description">{t('trophy_2021_ranking')}</span><br />
 <span className="description">{t('trophy_2022_ranking')}</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2022_team')}</span><br />
+<span className="description">
+  <span style={{ color: "#C0C0C0", fontWeight: "bold" }}>
+    {t('trophy_2022_team').slice(0, 4)}
+  </span>
+  {t('trophy_2022_team').slice(4)}
+</span><br />
 <span className="description">{t('trophy_2023_world')}</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2023_team')}</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2023_europe')}</span><br />
+<span className="description">
+  <span style={{ color: "#C0C0C0", fontWeight: "bold" }}>
+    {t('trophy_2023_team').slice(0, 4)}
+  </span>
+  {t('trophy_2023_team').slice(4)}
+</span><br />
+<span className="description">
+  <span style={{ color: "#CD7F32", fontWeight: "bold" }}>
+    {t('trophy_2023_europe').slice(0, 4)}
+  </span>
+  {t('trophy_2023_europe').slice(4)}
+</span><br />
 <span className="description">{t('trophy_2023_ranking')}</span><br />
 <span className="description">{t('trophy_2024_ranking')}</span><br />
 <span className="description">{t('trophy_2025_ranking')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2025_world')}</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2025_team')}</span><br />
+<span className="description">
+  <span style={{ color: "#CD7F32", fontWeight: "bold" }}>
+    {t('trophy_2025_team').slice(0, 4)}
+  </span>
+  {t('trophy_2025_team').slice(4)}
+</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2026_world')}</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2026_europe')}</span><br />
+<span className="description">
+  <span style={{ color: "#CD7F32", fontWeight: "bold" }}>
+    {t('trophy_2026_europe').slice(0, 4)}
+  </span>
+  {t('trophy_2026_europe').slice(4)}
+</span><br />
 
             </div>
 
