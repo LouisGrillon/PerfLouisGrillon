@@ -33,7 +33,7 @@ function About() {
 
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2008')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2009')}</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2010')}</span><br />
+<span className="description"><span style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2010').slice(0, 4)}</span>{t('trophy_2010').slice(4)}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2011_europe')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2011')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2014_europe')}</span><br />
