@@ -40,28 +40,28 @@ function About() {
 <span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>{t('trophy_ufolep_2010_2014')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2015')}</span><br />
 <span className="description">{t('trophy_2015_team')}</span><br />
-<span className="description">Depuis 2015 - Inscrit sur les listes ministérielles des sportifs de haut niveau.</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2016 et 2017 - Champion du monde par équipes avec l'équipe de France.</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2016 et 2017 - Champion du monde junior de BikeTrial.</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2017 - Vice-champion du monde junior en Trial 20 pouces.</span><br />
-<span className="description">2017 - Entrée dans le top 10 du classement mondial UCI.</span><br />
-<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>2017, 2019, 2020, 2021, 2022 et 2023 - Champion de France Élite en Trial 20 pouces.</span><br />
-<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>2019, 2021, 2022, 2023, 2024 et 2025 - Champion de France Élite UFOLEP.</span><br />
-<span className="description">2021 - Entrée dans le top 8 du classement mondial UCI.</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2021 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
-<span className="description">2021 - 7e au classement mondial UCI.</span><br />
-<span className="description">2022 - 9e au classement mondial UCI.</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2022 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
-<span className="description">2023 - Top 6 aux Championnats du monde Élite UCI en Trial 20 pouces.</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2023 - Vice-champion du monde par équipes avec l'équipe de France.</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2023 - 3e au Championnat d'Europe Élite de BikeTrial.</span><br />
-<span className="description">2023 - 6e au classement mondial UCI.</span><br />
-<span className="description">2024 - 8e au classement mondial UCI.</span><br />
-<span className="description">2025 - 10e au classement mondial UCI.</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2025 - Champion du monde Élite de BikeTrial.</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2025 - 3e aux Championnats du monde par équipes avec l'équipe de France.</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2026 - Champion du monde Élite de BikeTrial.</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2026 - 3e au Championnat d'Europe Élite de BikeTrial.</span><br />
+<span className="description">{t('trophy_high_level')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017_junior')}</span><br />
+<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2017_junior')}</span><br />
+<span className="description">{t('trophy_2017_top10')}</span><br />
+<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>	{t('trophy_france')}</span><br />
+<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>	{t('trophy_ufolep')}</span><br />
+<span className="description">{t('trophy_2021_top8')}</span><br />
+<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2021_team')}</span><br />
+<span className="description">{t('trophy_2021_ranking')}</span><br />
+<span className="description">{t('trophy_2022_ranking')}</span><br />
+<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2022_team')}</span><br />
+<span className="description">{t('trophy_2023_world')}</span><br />
+<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2023_team')}</span><br />
+<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2023_europe')}</span><br />
+<span className="description">{t('trophy_2023_ranking')}</span><br />
+<span className="description">{t('trophy_2024_ranking')}</span><br />
+<span className="description">{t('trophy_2025_ranking')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2025_world')}</span><br />
+<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2025_team')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2026_world')}</span><br />
+<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2026_europe')}</span><br />
 
             </div>
 
