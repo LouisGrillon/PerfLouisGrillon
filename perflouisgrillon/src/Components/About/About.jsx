@@ -71,11 +71,21 @@ function About() {
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
   {t('trophy_2016_team')}
 </span><br />
+ <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
+  {t('trophy_2016_junior')}
+</span><br />               
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
   {t('trophy_2017_team')}
 </span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017_junior')}</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2017_junior')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
+  {t('trophy_2017_junior_biketrial')}
+</span><br />
+<span className="description">
+  <span style={{ color: "#C0C0C0", fontWeight: "bold" }}>
+    {t('trophy_2017_junior_trial').slice(0, 4)}
+  </span>
+  {t('trophy_2017_junior_trial').slice(4)}
+</span><br />
 <span className="description">{t('trophy_2017_top10')}</span><br />
 <span className="description">
   {t('trophy_france').split(/(2017,\s*2019,\s*2020,\s*2021,\s*2022\s*(?:et|and)\s*2023)/gi).map((part, i) =>
