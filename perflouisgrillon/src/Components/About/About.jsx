@@ -30,11 +30,11 @@ function About() {
             <div className="trophies_wrapper" >
                 <h2 className="trophies_Title">{t('trophies_Title')}</h2>
 
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2008 - Champion d'Europe U10 de BikeTrial.</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2009 - Vainqueur des Jeux Mondiaux de la Jeunesse, catégorie Poussin (U10), pour ma première sélection.</span><br />
-<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>2010 - Vice-champion des Jeux Mondiaux de la Jeunesse, catégorie Benjamin (U12).</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2011 - Champion d'Europe U12 de BikeTrial.</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2011 - 3e aux Jeux Mondiaux de la Jeunesse, catégorie Benjamin (U12).</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2008')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2009')}</span><br />
+<span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2010')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2011_europe')}</span><br />
+<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2011')}</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>2014 - Champion d'Europe U14 de BikeTrial.</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>2014 - 3e au Championnat du monde U14 de BikeTrial.</span><br />
 <span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>2010, 2011, 2012, 2013 et 2014 - Champion de France UFOLEP.</span><br />
