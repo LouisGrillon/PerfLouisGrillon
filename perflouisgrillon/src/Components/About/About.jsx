@@ -97,7 +97,12 @@ function About() {
   )}
 </span><br />
 <span className="description">{t('trophy_2021_top8')}</span><br />
-<span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2021_team')}</span><br />
+<span className="description">
+  <span style={{ color: "#C0C0C0", fontWeight: "bold" }}>
+    {t('trophy_2021_team').slice(0, 4)}
+  </span>
+  {t('trophy_2021_team').slice(4)}
+</span><br />
 <span className="description">{t('trophy_2021_ranking')}</span><br />
 <span className="description">{t('trophy_2022_ranking')}</span><br />
 <span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2022_team')}</span><br />
