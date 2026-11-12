@@ -57,7 +57,18 @@ function About() {
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017_junior')}</span><br />
 <span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2017_junior')}</span><br />
 <span className="description">{t('trophy_2017_top10')}</span><br />
-<span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>	{t('trophy_france')}</span><br />
+<span className="description">
+  {t('trophy_france').split(/(2017,\s*2019,\s*2020,\s*2021,\s*2022\s*(?:et|and)\s*2023)/gi).map((part, i) =>
+    /2017,\s*2019,\s*2020,\s*2021,\s*2022\s*(?:et|and)\s*2023/i.test(part) ? (
+      <span key={i} style={{
+        background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        fontWeight: "bold"
+      }}>{part}</span>
+    ) : part
+  )}
+</span><br />
 <span className="description" style={{ background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontWeight: "bold" }}>	{t('trophy_ufolep')}</span><br />
 <span className="description">{t('trophy_2021_top8')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2021_team')}</span><br />
