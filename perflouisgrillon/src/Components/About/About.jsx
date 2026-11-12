@@ -39,8 +39,8 @@ function About() {
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2014_europe')}</span><br />
 <span className="description" style={{ color: "#CD7F32", fontWeight: "bold" }}>{t('trophy_2014')}</span><br />
 <span className="description">
-  {t('trophy_ufolep_2010_2014').split(/(France|French)/gi).map((part, i) =>
-    /^(France|French)$/i.test(part) ? (
+  {t('trophy_ufolep_2010_2014').split(/((?:2010,\s*2011,\s*2012,\s*2013\s*(?:et|and)\s*2014))/gi).map((part, i) =>
+    /2010,\s*2011,\s*2012,\s*2013\s*(?:et|and)\s*2014/i.test(part) ? (
       <span key={i} style={{
         background: "linear-gradient(90deg, #2875DF 0%, #2875DF 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #ED4248 66.66%, #ED4248 100%)",
         WebkitBackgroundClip: "text",
