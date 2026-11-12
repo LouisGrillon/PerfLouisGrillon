@@ -68,7 +68,12 @@ function About() {
 </span><br />
 <span className="description">{t('trophy_2015_team')}</span><br />
 <span className="description">{t('trophy_high_level')}</span><br />
-<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017')}</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
+  {t('trophy_2016_team')}
+</span><br />
+<span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>
+  {t('trophy_2017_team')}
+</span><br />
 <span className="description" style={{ color: "#D4AF37", fontWeight: "bold" }}>{t('trophy_2016_2017_junior')}</span><br />
 <span className="description" style={{ color: "#C0C0C0", fontWeight: "bold" }}>{t('trophy_2017_junior')}</span><br />
 <span className="description">{t('trophy_2017_top10')}</span><br />
