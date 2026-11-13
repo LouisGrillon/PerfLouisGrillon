@@ -322,3 +322,29 @@ input:checked + .checkbox_slider::after{
     background-color: transparent;
   }
 }
+
+/* Menu hamburger adapté au téléphone en paysage */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .navbar.show_nav .link_list {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    box-sizing: border-box;
+    padding: 55px 20px 20px;
+    overflow-y: auto;
+    justify-content: flex-start;
+  }
+
+  .navbar.show_nav .navbar_item {
+    transform: none;
+    margin: 0;
+  }
+
+  .navbar.show_nav .navbar_link {
+    padding: 10px;
+    font-size: 18px;
+    margin: 0;
+  }
+}
