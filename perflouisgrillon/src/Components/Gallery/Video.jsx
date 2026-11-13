@@ -37,8 +37,8 @@ function Video() {
                     {vidDocs && vidDocs.map( doc =>
                             {
                                 return (
-                                    <div className="vidWrap" key={doc.id} onClick={ () =>getVid(doc.url) } >
-                                        <video muted="true" className="vidbox" src={doc.url} alt="gallery" id="vid" />
+                                    <div className="vidWrap" key={doc.id} onClick={ () => getVid(doc.url || doc.vidUrl) } >
+                                        <video muted="true" className="vidbox" src={doc.url || doc.vidUrl} alt="gallery" id="vid" />
                                     </div>
                                 )
                             } 
