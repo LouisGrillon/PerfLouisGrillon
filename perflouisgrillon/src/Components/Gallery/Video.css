@@ -131,3 +131,32 @@ width: 100vw;
   }
 
 }
+
+/* Affichage des vidéos sur téléphone */
+@media screen and (max-width: 767px) {
+  .vid_grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 100px auto 40px;
+    padding-bottom: 40px;
+    top: auto;
+    gap: 20px;
+  }
+
+  .vidWrap {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    grid-row: auto;
+  }
+
+  .vidbox {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+}
