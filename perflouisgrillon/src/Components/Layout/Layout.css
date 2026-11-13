@@ -291,3 +291,16 @@ input:checked + .checkbox_slider::after{
     z-index: 102;
   }
 }
+
+/* Éviter que le menu fermé recouvre les vidéos sur téléphone */
+@media screen and (max-width: 767px) {
+  .navbar:not(.show_nav) .link_list {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .navbar.show_nav .link_list {
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
