@@ -161,18 +161,6 @@ width: 100vw;
   }
 }
 
-/* Garder les boutons Images / Vidéos accessibles sur téléphone */
-@media screen and (max-width: 767px) {
-  .videoPage .gallery_Link {
-    position: relative;
-    z-index: 10;
-  }
-
-  .videoPage .vid_grid {
-    z-index: 1;
-  }
-}
-
 /* Vidéo agrandie : croix dans le coin de la vidéo */
 .vidModel.open {
   z-index: 200;
@@ -211,21 +199,4 @@ width: 100vw;
   cursor: pointer;
   z-index: 201;
   transform: none;
-}
-
-/* Boutons Images / Vidéos visibles sur téléphone */
-@media screen and (max-width: 767px) {
-  .videoPage .gallery_Link {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 80%;
-    margin: 110px auto 25px;
-    z-index: 10;
-    justify-content: space-around;
-  }
-
-  .videoPage .vid_grid {
-    margin-top: 20px;
-  }
 }
