@@ -33,10 +33,15 @@ function Gallery() {
                         <Link className="redirect" to='/video'>Videos</Link>
                     </span>
             </div>
-                <div className={ model? "model open" : "model" } >
-                   <img src={ tempImgSrc } />
-                   <CloseRounded onClick={ () => setModel(false) } />
-                </div> 
+                <div className={model ? "model open" : "model"}>
+  <div className="mediaContainer">
+    <img src={tempImgSrc} alt="Photo agrandie" />
+    <CloseRounded
+      className="mediaClose"
+      onClick={() => setModel(false)}
+            />
+          </div>
+        </div>
                 <div className="img_grid">
                     {docs && docs.map( doc =>
                             {
