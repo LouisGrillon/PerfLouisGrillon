@@ -160,3 +160,15 @@ width: 100vw;
     object-fit: contain;
   }
 }
+
+/* Garder les boutons Images / Vidéos accessibles sur téléphone */
+@media screen and (max-width: 767px) {
+  .videoPage .gallery_Link {
+    position: relative;
+    z-index: 10;
+  }
+
+  .videoPage .vid_grid {
+    z-index: 1;
+  }
+}
