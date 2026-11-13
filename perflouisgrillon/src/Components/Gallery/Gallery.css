@@ -193,3 +193,15 @@ width: 100vw;
   cursor: pointer;
   z-index: 201;
 }
+
+/* Boutons Images / Vidéos accessibles en paysage */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .galleryPage .gallery_Link {
+    top: 65px;
+    z-index: 5;
+  }
+
+  .galleryPage .img_grid {
+    margin-top: 125px;
+  }
+}
