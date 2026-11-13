@@ -304,3 +304,21 @@ input:checked + .checkbox_slider::after{
     pointer-events: auto;
   }
 }
+
+/* Masquer complètement le panneau du menu fermé sur téléphone */
+@media screen and (max-width: 767px) {
+  .navbar:not(.show_nav) .link_list {
+    display: none;
+  }
+
+  .navbar.show_nav .link_list {
+    display: flex;
+  }
+}
+
+/* Test : supprimer le fond noir de la barre de navigation sur téléphone */
+@media screen and (max-width: 767px) {
+  .navbar:not(.show_nav) {
+    background-color: transparent;
+  }
+}
