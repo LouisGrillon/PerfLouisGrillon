@@ -28,7 +28,7 @@ function Video() {
                     </span>
                 </div>
 
-                <<div className={vidModel ? "vidModel open" : "vidModel"}>
+                <div className={vidModel ? "vidModel open" : "vidModel"}>
   <div className="mediaContainer">
     <video controls src={tempVidSrc} />
     <CloseRounded
