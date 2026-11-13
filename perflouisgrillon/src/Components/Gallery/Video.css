@@ -200,3 +200,32 @@ width: 100vw;
   z-index: 201;
   transform: none;
 }
+
+/* Navigation Images / Vidéos sur téléphone */
+@media screen and (max-width: 767px) {
+
+  .videoPage .gallery_Link {
+    position: fixed;
+    top: 20%;
+    left: 33%;
+    width: 33%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 4vw;
+    z-index: 10;
+  }
+
+  .videoPage .vid_grid {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 90%;
+    margin: 220px auto 40px;
+    padding-bottom: 40px;
+    gap: 20px;
+    z-index: 1;
+  }
+
+}
