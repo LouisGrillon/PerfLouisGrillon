@@ -229,3 +229,15 @@ width: 100vw;
   }
 
 }
+
+/* Boutons Images / Vidéos accessibles en paysage */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .videoPage .gallery_Link {
+    top: 65px;
+    z-index: 5;
+  }
+
+  .videoPage .vid_grid {
+    margin-top: 125px;
+  }
+}
