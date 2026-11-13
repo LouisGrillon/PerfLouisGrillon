@@ -28,10 +28,15 @@ function Video() {
                     </span>
                 </div>
 
-                <div className={ vidModel? "vidModel open" : "vidModel" } >
-                   <video controls src={ tempVidSrc } />
-                   <CloseRounded onClick={ () => setVidModel(false) } />
-                </div> 
+                <<div className={vidModel ? "vidModel open" : "vidModel"}>
+  <div className="mediaContainer">
+    <video controls src={tempVidSrc} />
+    <CloseRounded
+      className="mediaClose"
+      onClick={() => setVidModel(false)}
+    />
+  </div>
+</div> 
 
                 <div className="vid_grid">
                     {vidDocs && vidDocs.map( doc =>
