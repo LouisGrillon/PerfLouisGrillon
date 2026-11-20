@@ -10,12 +10,21 @@ import '../Layout/Layout.css'
 function Gallery() {
     const [model, setModel] = useState(false)
     const [tempImgSrc, setTempImgSrc] = useState('')
+    const [openYears, setOpenYears] = useState([])
 
     const { docs } = useFireStore('images')
 
     const getImg = (url) => {
         setTempImgSrc(url)
         setModel(true)
+    }
+
+    const toggleYear = (year) => {
+        setOpenYears((previous) =>
+            previous.includes(year)
+                ? previous.filter((item) => item !== year)
+                : [...previous, year]
+        )
     }
 
     // Regrouper les photos selon leur année réelle
@@ -36,7 +45,7 @@ function Gallery() {
         groupedPhotos[group].push(doc)
     })
 
-    // Années récentes en premier
+    // Afficher les années les plus récentes en premier
     const years = Object.keys(groupedPhotos)
         .filter((year) => year !== 'Photos à classer')
         .sort((a, b) => Number(b) - Number(a))
@@ -79,33 +88,76 @@ function Gallery() {
                 </div>
 
                 <div className="gallerySections">
-                    {years.map((year) => (
-                        <section
-                            className="galleryYearSection"
-                            key={year}
-                        >
-                            <h2 className="galleryYearTitle">
-                                {year}
-                            </h2>
+                    {years.map((year) => {
+                        const photos = groupedPhotos[year]
+                        const isOpen = openYears.includes(year)
 
-                            <div className="img_grid">
-                                {groupedPhotos[year].map((doc) => (
-                                    <div
-                                        className="imgWrap"
-                                        key={doc.id}
-                                        onClick={() => getImg(doc.url)}
+                        return (
+                            <section
+                                className="galleryYearSection"
+                                key={year}
+                            >
+                                <div className="galleryYearHeader">
+                                    <h2 className="galleryYearTitle">
+                                        {year}
+                                    </h2>
+
+                                    <button
+                                        type="button"
+                                        className="galleryYearToggle"
+                                        onClick={() => toggleYear(year)}
+                                        aria-expanded={isOpen}
+                                        aria-label={
+                                            isOpen
+                                                ? `Fermer ${year}`
+                                                : `Voir les photos de ${year}`
+                                        }
                                     >
-                                        <img
-                                            className="imgbox"
-                                            src={doc.url}
-                                            alt={`Galerie ${year}`}
-                                            loading="lazy"
-                                        />
+                                        {isOpen ? '−' : '+'}
+                                    </button>
+                                </div>
+
+                                <div className="galleryYearPreview">
+                                    {photos.slice(0, 3).map((photo) => (
+                                        <div
+                                            className="galleryPreviewPhoto"
+                                            key={photo.id}
+                                        >
+                                            <img
+                                                src={photo.url}
+                                                alt={`Aperçu ${year}`}
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {isOpen && (
+                                    <div className="galleryYearExpanded">
+                                        <div className="img_grid">
+                                            {photos.map((photo) => (
+                                                <button
+                                                    type="button"
+                                                    className="imgWrap"
+                                                    key={photo.id}
+                                                    onClick={() =>
+                                                        getImg(photo.url)
+                                                    }
+                                                >
+                                                    <img
+                                                        className="imgbox"
+                                                        src={photo.url}
+                                                        alt={`Galerie ${year}`}
+                                                        loading="lazy"
+                                                    />
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
+                                )}
+                            </section>
+                        )
+                    })}
                 </div>
             </div>
 
