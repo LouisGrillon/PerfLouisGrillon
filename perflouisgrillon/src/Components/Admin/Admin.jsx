@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import ProgressBar from './ProgressBar'
-import PhotoYearManager from './PhotoYearManager'
 import VidProgressBar from './VidProgressBar'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAuth } from '../context/AuthContext'
@@ -181,8 +180,6 @@ function Admin() {
             </div>
 
                  <Layout />
-
-            <PhotoYearManager />
 
             <footer>
                 <Footer />
