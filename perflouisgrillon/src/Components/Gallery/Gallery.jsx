@@ -1,3 +1,4 @@
+
 import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import { Link } from 'react-router-dom'
@@ -92,6 +93,23 @@ function Gallery() {
                         const photos = groupedPhotos[year]
                         const isOpen = openYears.includes(year)
 
+                        // Récupérer les 3 photos choisies dans l'Admin
+                        const selectedPreviews = photos
+                            .filter((photo) =>
+                                [1, 2, 3].includes(photo.previewOrder)
+                            )
+                            .sort(
+                                (a, b) =>
+                                    a.previewOrder - b.previewOrder
+                            )
+
+                        // Utiliser la sélection enregistrée dans Firebase
+                        // Sinon, conserver les 3 premières photos
+                        const previewPhotos =
+                            selectedPreviews.length === 3
+                                ? selectedPreviews
+                                : photos.slice(0, 3)
+
                         return (
                             <section
                                 className="galleryYearSection"
@@ -117,8 +135,9 @@ function Gallery() {
                                     </button>
                                 </div>
 
+                                {/* Les 3 photos d'aperçu sélectionnées */}
                                 <div className="galleryYearPreview">
-                                    {photos.slice(0, 3).map((photo) => (
+                                    {previewPhotos.map((photo) => (
                                         <div
                                             className="galleryPreviewPhoto"
                                             key={photo.id}
@@ -132,6 +151,7 @@ function Gallery() {
                                     ))}
                                 </div>
 
+                                {/* Toutes les photos de l'année */}
                                 {isOpen && (
                                     <div className="galleryYearExpanded">
                                         <div className="img_grid">
