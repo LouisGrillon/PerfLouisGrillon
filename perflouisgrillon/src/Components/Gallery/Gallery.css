@@ -57,7 +57,13 @@ body {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Titre et bouton + */
+/* Une année ouverte occupe toute la largeur */
+.galleryYearSectionOpen {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Titre et bouton + / - */
 .galleryYearHeader {
   display: flex;
   justify-content: space-between;
@@ -157,6 +163,11 @@ body {
   width: 100%;
 }
 
+/* Trois colonnes lorsque l'année est ouverte */
+.galleryYearSectionOpen .img_grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .imgWrap {
   display: flex;
   justify-content: center;
@@ -169,6 +180,11 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: opacity 250ms ease;
+}
+
+/* Photos plus grandes dans l'année ouverte */
+.galleryYearSectionOpen .imgWrap {
+  height: 300px;
 }
 
 .imgWrap:hover {
@@ -273,6 +289,14 @@ body {
     height: 160px;
   }
 
+  .galleryYearSectionOpen .img_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .galleryYearSectionOpen .imgWrap {
+    height: 220px;
+  }
+
   .gallery_Link {
     top: 13%;
     font-size: 3vw;
@@ -324,6 +348,18 @@ body {
     height: 150px;
   }
 
+  .galleryYearSectionOpen {
+    grid-column: 1 / -1;
+  }
+
+  .galleryYearSectionOpen .img_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .galleryYearSectionOpen .imgWrap {
+    height: 180px;
+  }
+
   .gallery_Link {
     width: 60%;
     left: 20%;
@@ -338,11 +374,13 @@ body {
     height: 95px;
   }
 
-  .img_grid {
+  .img_grid,
+  .galleryYearSectionOpen .img_grid {
     grid-template-columns: 1fr;
   }
 
-  .imgWrap {
+  .imgWrap,
+  .galleryYearSectionOpen .imgWrap {
     height: 220px;
   }
 }
