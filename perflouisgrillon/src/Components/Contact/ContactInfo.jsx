@@ -63,7 +63,7 @@ export default function ContactInfo({submitForm}) {
 
           <PhoneInput
           country="fr"
-    value={values.phone}
+    value={values.phone || ''}
   onChange={(phone) =>
     handleChange({
       target: {
