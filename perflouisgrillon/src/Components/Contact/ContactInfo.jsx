@@ -83,7 +83,7 @@ export default function ContactInfo({submitForm}) {
     id: 'phone',
     autoComplete: 'tel'
   }}
-  inputClass="form-input"
+  inputClass="phone-number-input"
 />
 
           
