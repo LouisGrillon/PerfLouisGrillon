@@ -1,10 +1,12 @@
 import './Contact.css';
-import PhoneInput from 'react-phone-input-2';
+import PhoneInputModule from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { useContact } from "./useContact";
 import { useTranslation } from 'react-i18next';
 
 import validate from './validateInfo';
+
+const PhoneInput = PhoneInputModule.default || PhoneInputModule;
 
 export default function ContactInfo({submitForm}) {
 
