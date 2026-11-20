@@ -65,6 +65,7 @@ export default function ContactInfo({submitForm}) {
           <PhoneInput
           country="fr"
               localization={i18n.language.startsWith('fr') ? fr : undefined}
+              key={i18n.language.startsWith('fr') ? 'fr' : 'en'}
     value={values.phone || ''}
   onChange={(phone) =>
     handleChange({
