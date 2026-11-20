@@ -7,62 +7,85 @@ function PhotoYearManager() {
     const { docs } = useFireStore('images')
 
     const [selectedIds, setSelectedIds] = useState([])
-    const [year, setYear] = useState(2026)
+    const [year, setYear] = useState(2025)
+    const [filter, setFilter] = useState('2026')
     const [saving, setSaving] = useState(false)
     const [message, setMessage] = useState('')
     const [confirming, setConfirming] = useState(false)
-
-    // Uniquement les photos qui n'ont pas encore d'année
-    const unclassified = docs.filter((photo) => {
-        const photoYear = Number(photo.year)
-        return !Number.isInteger(photoYear) || photoYear < 2006
-    })
 
     const years = Array.from(
         { length: 2026 - 2015 + 1 },
         (_, index) => 2026 - index
     )
 
+    function getPhotoYear(photo) {
+        const value = Number(photo.year)
+
+        return Number.isInteger(value) && value >= 2006
+            ? value
+            : null
+    }
+
+    const visiblePhotos = docs.filter((photo) => {
+        const photoYear = getPhotoYear(photo)
+
+        if (filter === 'unclassified') {
+            return photoYear === null
+        }
+
+        if (filter === 'all') {
+            return true
+        }
+
+        return photoYear === Number(filter)
+    })
+
+    const selectedPhotos = docs.filter((photo) =>
+        selectedIds.includes(photo.id)
+    )
+
+    function resetConfirmation() {
+        setConfirming(false)
+        setMessage('')
+    }
+
     function togglePhoto(id) {
         if (saving) return
 
         setSelectedIds((previous) =>
             previous.includes(id)
-                ? previous.filter((selectedId) => selectedId !== id)
+                ? previous.filter((item) => item !== id)
                 : [...previous, id]
         )
 
-        setConfirming(false)
-        setMessage('')
-    }
-
-    function selectAll() {
-        setSelectedIds(unclassified.map((photo) => photo.id))
-        setConfirming(false)
-        setMessage('')
+        resetConfirmation()
     }
 
     function clearSelection() {
         setSelectedIds([])
-        setConfirming(false)
-        setMessage('')
+        resetConfirmation()
+    }
+
+    function changeFilter(value) {
+        setFilter(value)
+        setSelectedIds([])
+        resetConfirmation()
     }
 
     async function saveYears() {
-        if (saving || selectedIds.length === 0) return
+        if (saving || !confirming || selectedIds.length === 0) {
+            return
+        }
+
+        if (selectedIds.length > 400) {
+            setMessage('Limite de 400 photos par opération.')
+            return
+        }
 
         setSaving(true)
         setMessage('')
 
         try {
-            // Firestore accepte jusqu'à 500 écritures par lot.
-            // On limite volontairement chaque opération à 400.
-            if (selectedIds.length > 400) {
-                throw new Error(
-                    'Sélection trop importante : limite de 400 photos.'
-                )
-            }
-
             const batch = writeBatch(db)
 
             selectedIds.forEach((id) => {
@@ -76,17 +99,18 @@ function PhotoYearManager() {
             await batch.commit()
 
             setMessage(
-                `${selectedIds.length} photo(s) classée(s) en ${year}.`
+                `${selectedIds.length} photo(s) enregistrée(s) en ${year}.`
             )
 
             setSelectedIds([])
             setConfirming(false)
         } catch (error) {
             console.error(error)
+
             setMessage(
-                'Erreur : enregistrement impossible. ' +
-                error.message
+                'Erreur Firebase : ' + error.message
             )
+
             setConfirming(false)
         } finally {
             setSaving(false)
@@ -99,74 +123,104 @@ function PhotoYearManager() {
                 color: 'white',
                 padding: '30px 20px',
                 maxWidth: '1100px',
-                margin: '40px auto'
+                margin: '40px auto',
+                position: 'relative',
+                zIndex: 1
             }}
         >
-            <h2>Classement des anciennes photos</h2>
+            <h2>Classement et correction des photos</h2>
 
             <p>
-                Photos restant à classer : {unclassified.length}
+                Tu peux classer les anciennes photos ou
+                corriger l'année des photos déjà enregistrées.
             </p>
-
-            <p>
-                Sélectionne les photos correspondant à une année,
-                puis vérifie avant d'enregistrer.
-            </p>
-
-            <div style={{ marginBottom: '20px' }}>
-                <label htmlFor="classificationYear">
-                    Année :
-                </label>
-
-                <select
-                    id="classificationYear"
-                    value={year}
-                    disabled={saving}
-                    onChange={(event) => {
-                        setYear(Number(event.target.value))
-                        setConfirming(false)
-                    }}
-                    style={{
-                        marginLeft: '10px',
-                        padding: '8px'
-                    }}
-                >
-                    {years.map((item) => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </select>
-            </div>
 
             <div
                 style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    gap: '10px',
+                    gap: '20px',
                     marginBottom: '20px'
                 }}
             >
-                <button
-                    type="button"
-                    onClick={selectAll}
-                    disabled={saving}
-                >
-                    Tout sélectionner
-                </button>
+                <div>
+                    <label htmlFor="photoFilter">
+                        Afficher les photos :
+                    </label>
 
-                <button
-                    type="button"
-                    onClick={clearSelection}
-                    disabled={saving}
-                >
-                    Effacer la sélection
-                </button>
+                    <select
+                        id="photoFilter"
+                        value={filter}
+                        disabled={saving}
+                        onChange={(event) =>
+                            changeFilter(event.target.value)
+                        }
+                        style={{
+                            display: 'block',
+                            marginTop: '8px',
+                            padding: '10px'
+                        }}
+                    >
+                        <option value="unclassified">
+                            Photos à classer
+                        </option>
+
+                        {years.map((item) => (
+                            <option key={item} value={item}>
+                                Photos classées en {item}
+                            </option>
+                        ))}
+
+                        <option value="all">
+                            Toutes les photos
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="classificationYear">
+                        Attribuer l'année :
+                    </label>
+
+                    <select
+                        id="classificationYear"
+                        value={year}
+                        disabled={saving}
+                        onChange={(event) => {
+                            setYear(Number(event.target.value))
+                            resetConfirmation()
+                        }}
+                        style={{
+                            display: 'block',
+                            marginTop: '8px',
+                            padding: '10px'
+                        }}
+                    >
+                        {years.map((item) => (
+                            <option key={item} value={item}>
+                                {item}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             <p>
-                {selectedIds.length} photo(s) sélectionnée(s)
+                Photos affichées : {visiblePhotos.length}
             </p>
+
+            <p>
+                Photos sélectionnées : {selectedIds.length}
+            </p>
+
+            <button
+                type="button"
+                onClick={clearSelection}
+                disabled={saving}
+                style={{ marginBottom: '20px' }}
+            >
+                Effacer la sélection
+            </button>
 
             <div
                 style={{
@@ -176,9 +230,11 @@ function PhotoYearManager() {
                     gap: '15px'
                 }}
             >
-                {unclassified.map((photo, index) => {
+                {visiblePhotos.map((photo, index) => {
                     const selected =
                         selectedIds.includes(photo.id)
+
+                    const photoYear = getPhotoYear(photo)
 
                     return (
                         <button
@@ -187,7 +243,6 @@ function PhotoYearManager() {
                             disabled={saving}
                             onClick={() => togglePhoto(photo.id)}
                             style={{
-                                position: 'relative',
                                 padding: '5px',
                                 background: selected
                                     ? '#1e824c'
@@ -219,6 +274,19 @@ function PhotoYearManager() {
                                 Photo {index + 1}
                                 {selected ? ' ✓' : ''}
                             </span>
+
+                            <span
+                                style={{
+                                    display: 'block',
+                                    color: '#ddd',
+                                    fontSize: '12px'
+                                }}
+                            >
+                                Année actuelle :{' '}
+                                {photoYear === null
+                                    ? 'Non classée'
+                                    : photoYear}
+                            </span>
                         </button>
                     )
                 })}
@@ -231,14 +299,42 @@ function PhotoYearManager() {
                     border: '1px solid #777'
                 }}
             >
+                <h3>Vérification avant enregistrement</h3>
+
                 <p>
-                    Année choisie : <strong>{year}</strong>
+                    Année à attribuer : <strong>{year}</strong>
                 </p>
 
                 <p>
-                    Photos sélectionnées :
-                    <strong> {selectedIds.length}</strong>
+                    Photos sélectionnées :{' '}
+                    <strong>{selectedPhotos.length}</strong>
                 </p>
+
+                {selectedPhotos.length > 0 && (
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns:
+                                'repeat(auto-fill, minmax(100px, 1fr))',
+                            gap: '10px',
+                            marginBottom: '20px'
+                        }}
+                    >
+                        {selectedPhotos.map((photo) => (
+                            <img
+                                key={photo.id}
+                                src={photo.url}
+                                alt="Photo sélectionnée"
+                                style={{
+                                    width: '100%',
+                                    height: '90px',
+                                    objectFit: 'contain',
+                                    background: '#222'
+                                }}
+                            />
+                        ))}
+                    </div>
+                )}
 
                 {!confirming ? (
                     <button
@@ -253,9 +349,11 @@ function PhotoYearManager() {
                 ) : (
                     <>
                         <p>
-                            Confirmer l'attribution de l'année
-                            {' '}{year} à ces
-                            {' '}{selectedIds.length} photos ?
+                            Tu vas attribuer l'année{' '}
+                            <strong>{year}</strong> à{' '}
+                            <strong>
+                                {selectedIds.length} photo(s)
+                            </strong>.
                         </p>
 
                         <button
@@ -271,7 +369,9 @@ function PhotoYearManager() {
                         <button
                             type="button"
                             disabled={saving}
-                            onClick={() => setConfirming(false)}
+                            onClick={() =>
+                                setConfirming(false)
+                            }
                             style={{ marginLeft: '10px' }}
                         >
                             Annuler
