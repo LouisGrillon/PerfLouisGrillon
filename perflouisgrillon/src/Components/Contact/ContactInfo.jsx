@@ -1,6 +1,7 @@
 import './Contact.css';
 import PhoneInputModule from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import fr from 'react-phone-input-2/lang/fr.json';
 import { useContact } from "./useContact";
 import { useTranslation } from 'react-i18next';
 
@@ -63,6 +64,7 @@ export default function ContactInfo({submitForm}) {
 
           <PhoneInput
           country="fr"
+              localization={i18n.language.startsWith('fr') ? fr : undefined}
     value={values.phone || ''}
   onChange={(phone) =>
     handleChange({
