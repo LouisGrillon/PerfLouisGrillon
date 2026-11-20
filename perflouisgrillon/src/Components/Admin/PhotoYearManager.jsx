@@ -14,9 +14,9 @@ function PhotoYearManager() {
     const [confirming, setConfirming] = useState(false)
 
     const years = Array.from(
-        { length: 2026 - 2015 + 1 },
-        (_, index) => 2026 - index
-    )
+    { length: 2026 - 2006 + 1 },
+    (_, index) => 2026 - index
+)
 
     function getPhotoYear(photo) {
         const value = Number(photo.year)
