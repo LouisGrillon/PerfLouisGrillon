@@ -1,4 +1,6 @@
 import './Contact.css';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import { useContact } from "./useContact";
 import { useTranslation } from 'react-i18next';
 
@@ -6,7 +8,7 @@ import validate from './validateInfo';
 
 export default function ContactInfo({submitForm}) {
 
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const {handleChange, values, handleSubmit, errors}
     = useContact(
         submitForm,
@@ -57,16 +59,30 @@ export default function ContactInfo({submitForm}) {
           autoComplete="off"
           placeholder={t('name')}/>
 
-          <input 
-          name="phone" 
-          id="phone" 
-          type="tel"
-          value={values.phone}
-          onChange={handleChange}
-          className="form-input"
-          maxLength='10' 
-          autoComplete="off"
-          placeholder={t('phone')}/>
+          <PhoneInput
+          country="fr"
+    value={values.phone}
+  onChange={(phone) =>
+    handleChange({
+      target: {
+        name: 'phone',
+        value: `+${phone}`
+      }
+    })
+  }
+  enableSearch={true}
+  searchPlaceholder={
+    i18n.language.startsWith('fr')
+      ? 'Rechercher un pays...'
+      : 'Search country...'
+  }
+  inputProps={{
+    name: 'phone',
+    id: 'phone',
+    autoComplete: 'tel'
+  }}
+  inputClass="form-input"
+/>
 
           
           <textarea 
