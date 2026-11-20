@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import ProgressBar from './ProgressBar'
 import VidProgressBar from './VidProgressBar'
+import PhotoPreviewManager from './PhotoPreviewManager'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -21,6 +22,9 @@ function Admin() {
     const currentYear = new Date().getFullYear()
     const [year, setYear] = useState(currentYear)
     const [selectedYear, setSelectedYear] = useState(null)
+
+    // Rubrique actuellement affichée
+    const [activeSection, setActiveSection] = useState('photos')
 
     const { logout } = useAuth()
     const navigate = useNavigate()
@@ -60,118 +64,172 @@ function Admin() {
     return (
         <>
             <div className="uploadPage">
-                <form
-                    className="uploadForm"
-                    onSubmit={(e) => e.preventDefault()}
-                >
-                    <h1>Selectionnez une Image</h1>
 
-                    <div style={{ marginBottom: '15px' }}>
-                        <label
-                            htmlFor="photoYear"
+                {/* Navigation entre les trois rubriques */}
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexWrap: 'wrap',
+                        gap: '12px',
+                        width: '100%',
+                        padding: '20px',
+                        boxSizing: 'border-box'
+                    }}
+                >
+                    {[
+                        ['photos', 'Ajouter des photos'],
+                        ['videos', 'Ajouter des vidéos'],
+                        ['preview', "Photos d'aperçu"]
+                    ].map(([section, label]) => (
+                        <button
+                            key={section}
+                            type="button"
+                            onClick={() => setActiveSection(section)}
                             style={{
-                                display: 'block',
-                                color: 'white',
-                                marginBottom: '8px'
+                                padding: '12px 18px',
+                                borderRadius: '8px',
+                                border: '1px solid #e2b55c',
+                                background:
+                                    activeSection === section
+                                        ? '#e2b55c'
+                                        : '#191919',
+                                color:
+                                    activeSection === section
+                                        ? '#111'
+                                        : '#fff',
+                                fontWeight: 'bold',
+                                cursor: 'pointer'
                             }}
                         >
-                            Année réelle de la photo
+                            {label}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Rubrique : Ajouter des photos */}
+                {activeSection === 'photos' && (
+                    <form
+                        className="uploadForm"
+                        onSubmit={(e) => e.preventDefault()}
+                    >
+                        <h1>Selectionnez une Image</h1>
+
+                        <div style={{ marginBottom: '15px' }}>
+                            <label
+                                htmlFor="photoYear"
+                                style={{
+                                    display: 'block',
+                                    color: 'white',
+                                    marginBottom: '8px'
+                                }}
+                            >
+                                Année réelle de la photo
+                            </label>
+
+                            <select
+                                id="photoYear"
+                                value={year}
+                                onChange={(e) =>
+                                    setYear(Number(e.target.value))
+                                }
+                                disabled={Boolean(file)}
+                                style={{
+                                    padding: '10px',
+                                    borderRadius: '6px',
+                                    fontSize: '16px',
+                                    maxWidth: '100%'
+                                }}
+                            >
+                                {Array.from(
+                                    { length: currentYear - 2006 + 1 },
+                                    (_, index) => currentYear - index
+                                ).map((photoYear) => (
+                                    <option
+                                        key={photoYear}
+                                        value={photoYear}
+                                    >
+                                        {photoYear}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <label className="uploadLabel">
+                            <input
+                                className="uploadInput"
+                                type="file"
+                                accept="image/png,image/jpeg"
+                                onChange={changeHandler}
+                                name="images"
+                                style={{ color: 'white' }}
+                                disabled={Boolean(file)}
+                            />
+                            <span className="uploadBtn">+</span>
                         </label>
 
-                        <select
-                            id="photoYear"
-                            value={year}
-                            onChange={(e) =>
-                                setYear(Number(e.target.value))
-                            }
-                            disabled={Boolean(file)}
-                            style={{
-                                padding: '10px',
-                                borderRadius: '6px',
-                                fontSize: '16px',
-                                maxWidth: '100%'
-                            }}
-                        >
-                            {Array.from(
-                                { length: currentYear - 2006 + 1 },
-                                (_, index) => currentYear - index
-                            ).map((photoYear) => (
-                                <option
-                                    key={photoYear}
-                                    value={photoYear}
-                                >
-                                    {photoYear}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                        <div className="output">
+                            {error && (
+                                <div className="error">{error}</div>
+                            )}
 
-                    <label className="uploadLabel">
-                        <input
-                            className="uploadInput"
-                            type="file"
-                            accept="image/png,image/jpeg"
-                            onChange={changeHandler}
-                            name="images"
-                            style={{ color: 'white' }}
-                            disabled={Boolean(file)}
-                        />
-                        <span className="uploadBtn">+</span>
-                    </label>
+                            {file && (
+                                <div>
+                                    {file.name} — Année : {selectedYear}
+                                </div>
+                            )}
 
-                    <div className="output">
-                        {error && (
-                            <div className="error">{error}</div>
-                        )}
+                            {file && (
+                                <ProgressBar
+                                    file={file}
+                                    setFile={setFile}
+                                    year={selectedYear}
+                                />
+                            )}
+                        </div>
+                    </form>
+                )}
 
-                        {file && (
-                            <div>
-                                {file.name} — Année : {selectedYear}
-                            </div>
-                        )}
+                {/* Rubrique : Ajouter des vidéos */}
+                {activeSection === 'videos' && (
+                    <form
+                        className="uploadForm"
+                        onSubmit={(e) => e.preventDefault()}
+                    >
+                        <h1>Selectionnez une Vidéo</h1>
 
-                        {file && (
-                            <ProgressBar
-                                file={file}
-                                setFile={setFile}
-                                year={selectedYear}
+                        <label className="uploadLabel">
+                            <input
+                                className="uploadInput"
+                                type="file"
+                                onChange={changeVidHandler}
+                                name="videos"
+                                style={{ color: 'white' }}
                             />
-                        )}
-                    </div>
-                </form>
+                            <span className="uploadBtn">+</span>
+                        </label>
 
-                <form
-                    className="uploadForm"
-                    onSubmit={(e) => e.preventDefault()}
-                >
-                    <h1>Selectionnez une Vidéo</h1>
+                        <div className="output">
+                            {viderror && (
+                                <div className="error">{viderror}</div>
+                            )}
 
-                    <label className="uploadLabel">
-                        <input
-                            className="uploadInput"
-                            type="file"
-                            onChange={changeVidHandler}
-                            name="videos"
-                            style={{ color: 'white' }}
-                        />
-                        <span className="uploadBtn">+</span>
-                    </label>
+                            {vidfile && <div>{vidfile.name}</div>}
 
-                    <div className="output">
-                        {viderror && (
-                            <div className="error">{viderror}</div>
-                        )}
+                            {vidfile && (
+                                <VidProgressBar
+                                    vidfile={vidfile}
+                                    setVidFile={setVidFile}
+                                />
+                            )}
+                        </div>
+                    </form>
+                )}
 
-                        {vidfile && <div>{vidfile.name}</div>}
-
-                        {vidfile && (
-                            <VidProgressBar
-                                vidfile={vidfile}
-                                setVidFile={setVidFile}
-                            />
-                        )}
-                    </div>
-                </form>
+                {/* Rubrique : Choisir les photos d'aperçu */}
+                {activeSection === 'preview' && (
+                    <PhotoPreviewManager />
+                )}
 
                 <LogoutIcon
                     className="logout"
@@ -179,7 +237,7 @@ function Admin() {
                 />
             </div>
 
-                 <Layout />
+            <Layout />
 
             <footer>
                 <Footer />
