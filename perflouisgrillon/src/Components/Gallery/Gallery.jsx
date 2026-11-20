@@ -19,11 +19,10 @@ function Gallery() {
         setModel(true)
     }
 
+    // Une seule année ouverte à la fois
     const toggleYear = (year) => {
         setOpenYears((previous) =>
-            previous.includes(year)
-                ? previous.filter((item) => item !== year)
-                : [...previous, year]
+            previous.includes(year) ? [] : [year]
         )
     }
 
@@ -53,6 +52,13 @@ function Gallery() {
     if (groupedPhotos['Photos à classer']) {
         years.push('Photos à classer')
     }
+
+    // Masquer les autres années lorsqu'une année est ouverte
+    const visibleYears = years.filter(
+        (year) =>
+            openYears.length === 0 ||
+            openYears.includes(year)
+    )
 
     return (
         <>
@@ -88,7 +94,7 @@ function Gallery() {
                 </div>
 
                 <div className="gallerySections">
-                    {years.map((year) => {
+                    {visibleYears.map((year) => {
                         const photos = groupedPhotos[year]
                         const isOpen = openYears.includes(year)
 
@@ -111,7 +117,11 @@ function Gallery() {
 
                         return (
                             <section
-                                className="galleryYearSection"
+                                className={
+                                    isOpen
+                                        ? 'galleryYearSection galleryYearSectionOpen'
+                                        : 'galleryYearSection'
+                                }
                                 key={year}
                             >
                                 <div className="galleryYearHeader">
