@@ -100,13 +100,15 @@ function PhotoPreviewManager() {
     return (
         <div
             style={{
-                color: 'white',
-                padding: '25px',
-                maxWidth: '1000px',
-                margin: '40px auto',
-                background: '#191919',
-                borderRadius: '12px'
-            }}
+    color: 'white',
+    padding: '25px',
+    width: '100%',
+    maxWidth: '1000px',
+    boxSizing: 'border-box',
+    margin: '40px auto',
+    background: '#191919',
+    borderRadius: '12px'
+}}
         >
             <h2>Choisir les 3 photos d'aperçu</h2>
 
@@ -140,38 +142,47 @@ function PhotoPreviewManager() {
                     </p>
 
                     <div
-                        style={{
-                            display: 'grid',
-                            gridTemplateColumns:
-                                'repeat(auto-fill, minmax(120px, 1fr))',
-                            gap: '12px'
-                        }}
-                    >
+    style={{
+        display: 'grid',
+        gridTemplateColumns:
+            'repeat(auto-fill, minmax(110px, 1fr))',
+        gap: '10px',
+        width: '100%',
+        maxHeight: '500px',
+        overflowY: 'auto',
+        padding: '10px',
+        boxSizing: 'border-box',
+        alignContent: 'start'
+    }}
+>
+                        
                         {photos.map((photo) => {
                             const position =
                                 selectedIds.indexOf(photo.id)
 
                             return (
                                 <button
-                                    key={photo.id}
-                                    type="button"
-                                    onClick={() =>
-                                        selectPhoto(photo.id)
-                                    }
-                                    disabled={saving}
-                                    style={{
-                                        position: 'relative',
-                                        padding: '0',
-                                        border:
-                                            position !== -1
-                                                ? '4px solid #e2b55c'
-                                                : '2px solid #555',
-                                        background: '#111',
-                                        cursor: 'pointer',
-                                        borderRadius: '6px',
-                                        overflow: 'hidden'
-                                    }}
-                                >
+    key={photo.id}
+    type="button"
+    onClick={() => selectPhoto(photo.id)}
+    disabled={saving}
+    style={{
+        position: 'relative',
+        width: '100%',
+        height: '120px',
+        minWidth: 0,
+        padding: '0',
+        border:
+            position !== -1
+                ? '4px solid #e2b55c'
+                : '2px solid #555',
+        background: '#111',
+        cursor: 'pointer',
+        borderRadius: '6px',
+        overflow: 'hidden'
+    }}
+>
+                                    
                                     <img
                                         src={photo.url}
                                         alt={`Photo ${year}`}
@@ -179,8 +190,9 @@ function PhotoPreviewManager() {
                                         style={{
                                             width: '100%',
                                             height: '110px',
-                                            objectFit: 'cover',
-                                            display: 'block'
+                                            objectFit: 'contain',
+                                            display: 'block',
+                                            background: '#111'
                                         }}
                                     />
 
