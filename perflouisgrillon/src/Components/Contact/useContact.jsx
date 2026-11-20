@@ -31,7 +31,7 @@ export const useContact = (callback, validate) => {
     setErrors(validate(values));
 
     if (Object.keys(validate(values)).length === 0) {
-      emailjs.sendForm("Gmail", template, e.target, userId).then(
+      emailjs.sendForm("service_qvtrcvs", template, e.target, userId).then(
         (result) => {
           console.log(result);
         },
