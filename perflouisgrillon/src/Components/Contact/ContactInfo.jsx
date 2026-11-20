@@ -68,7 +68,7 @@ export default function ContactInfo({submitForm}) {
     handleChange({
       target: {
         name: 'phone',
-        value: `+${phone}`
+        value: phone
       }
     })
   }
