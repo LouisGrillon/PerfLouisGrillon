@@ -1,4 +1,3 @@
-
 import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import { Link } from 'react-router-dom'
