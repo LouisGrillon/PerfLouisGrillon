@@ -2,21 +2,30 @@ import Footer from '../Footer/Footer'
 import Layout from '../Layout/Layout'
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
-import useFireStore from '../../hooks/useFireStore'
+import useFireStoreVid from '../../hooks/useFireStoreVid'
 import CloseRounded from '@mui/icons-material/CloseRounded'
 import './Gallery.css'
-import '../Layout/Layout.css'
+import './Video.css'
 
-function Gallery() {
-    const [model, setModel] = useState(false)
-    const [tempImgSrc, setTempImgSrc] = useState('')
+function Video() {
+    const [vidModel, setVidModel] = useState(false)
+    const [tempVidSrc, setTempVidSrc] = useState('')
     const [openYears, setOpenYears] = useState([])
 
-    const { docs } = useFireStore('images')
+    const { vidDocs } = useFireStoreVid('videos')
 
-    const getImg = (url) => {
-        setTempImgSrc(url)
-        setModel(true)
+    // Ouvrir une vidéo en grand
+    const getVid = (url) => {
+        if (!url) return
+
+        setTempVidSrc(url)
+        setVidModel(true)
+    }
+
+    // Fermer la vidéo et arrêter sa lecture
+    const closeVid = () => {
+        setVidModel(false)
+        setTempVidSrc('')
     }
 
     // Une seule année ouverte à la fois
@@ -26,31 +35,32 @@ function Gallery() {
         )
     }
 
-    // Regrouper les photos selon leur année réelle
-    const groupedPhotos = {}
+    // Regrouper les vidéos selon leur année réelle
+    const groupedVideos = {}
 
-    docs.forEach((doc) => {
+    vidDocs.forEach((doc) => {
         const year = Number(doc.year)
 
         const group =
             Number.isInteger(year) && year >= 2006
                 ? String(year)
-                : 'Photos à classer'
+                : 'Vidéos à classer'
 
-        if (!groupedPhotos[group]) {
-            groupedPhotos[group] = []
+        if (!groupedVideos[group]) {
+            groupedVideos[group] = []
         }
 
-        groupedPhotos[group].push(doc)
+        groupedVideos[group].push(doc)
     })
 
     // Afficher les années les plus récentes en premier
-    const years = Object.keys(groupedPhotos)
-        .filter((year) => year !== 'Photos à classer')
+    const years = Object.keys(groupedVideos)
+        .filter((year) => year !== 'Vidéos à classer')
         .sort((a, b) => Number(b) - Number(a))
 
-    if (groupedPhotos['Photos à classer']) {
-        years.push('Photos à classer')
+    // Sécurité : ne pas masquer une vidéo sans année
+    if (groupedVideos['Vidéos à classer']) {
+        years.push('Vidéos à classer')
     }
 
     // Masquer les autres années lorsqu'une année est ouverte
@@ -64,7 +74,7 @@ function Gallery() {
         <>
             <Layout />
 
-            <div className="galleryPage">
+            <div className="galleryPage videoPage">
                 <div className="gallery_Link">
                     <span className="redirect_img_wrapper">
                         <Link className="redirect" to="/gallery">
@@ -79,29 +89,41 @@ function Gallery() {
                     </span>
                 </div>
 
-                <div className={model ? 'model open' : 'model'}>
+                {/* Lecture des vidéos en grand */}
+                <div
+                    className={
+                        vidModel ? 'vidModel open' : 'vidModel'
+                    }
+                >
                     <div className="mediaContainer">
-                        <img
-                            src={tempImgSrc}
-                            alt="Photo agrandie"
-                        />
+                        {vidModel && (
+                            <video
+                                controls
+                                autoPlay
+                                playsInline
+                                src={tempVidSrc}
+                            />
+                        )}
 
                         <CloseRounded
                             className="mediaClose"
-                            onClick={() => setModel(false)}
+                            onClick={closeVid}
                         />
                     </div>
                 </div>
 
+                {/* Galerie organisée par année */}
                 <div className="gallerySections">
                     {visibleYears.map((year) => {
-                        const photos = groupedPhotos[year]
+                        const videos = groupedVideos[year]
                         const isOpen = openYears.includes(year)
 
-                        // Récupérer les 3 photos choisies dans l'Admin
-                        const selectedPreviews = photos
-                            .filter((photo) =>
-                                [1, 2, 3].includes(photo.previewOrder)
+                        // Récupérer les 3 vidéos choisies dans l'Admin
+                        const selectedPreviews = videos
+                            .filter((video) =>
+                                [1, 2, 3].includes(
+                                    video.previewOrder
+                                )
                             )
                             .sort(
                                 (a, b) =>
@@ -109,11 +131,11 @@ function Gallery() {
                             )
 
                         // Utiliser la sélection enregistrée dans Firebase
-                        // Sinon, conserver les 3 premières photos
-                        const previewPhotos =
+                        // Sinon, afficher les 3 premières vidéos
+                        const previewVideos =
                             selectedPreviews.length === 3
                                 ? selectedPreviews
-                                : photos.slice(0, 3)
+                                : videos.slice(0, 3)
 
                         return (
                             <section
@@ -137,47 +159,75 @@ function Gallery() {
                                         aria-label={
                                             isOpen
                                                 ? `Fermer ${year}`
-                                                : `Voir les photos de ${year}`
+                                                : `Voir les vidéos de ${year}`
                                         }
                                     >
                                         {isOpen ? '−' : '+'}
                                     </button>
                                 </div>
 
-                                {/* Les 3 photos d'aperçu sélectionnées */}
+                                {/* Les 3 vidéos d'aperçu sélectionnées */}
                                 <div className="galleryYearPreview">
-                                    {previewPhotos.map((photo) => (
+                                    {previewVideos.map((video) => (
                                         <div
                                             className="galleryPreviewPhoto"
-                                            key={photo.id}
+                                            key={video.id}
                                         >
-                                            <img
-                                                src={photo.url}
-                                                alt={`Aperçu ${year}`}
-                                                loading="lazy"
+                                            <video
+                                                src={
+                                                    video.url ||
+                                                    video.vidUrl
+                                                }
+                                                muted
+                                                playsInline
+                                                preload="metadata"
+                                                aria-hidden="true"
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    display: 'block',
+                                                    background: '#111',
+                                                    pointerEvents: 'none'
+                                                }}
                                             />
                                         </div>
                                     ))}
                                 </div>
 
-                                {/* Toutes les photos de l'année */}
+                                {/* Toutes les vidéos de l'année */}
                                 {isOpen && (
                                     <div className="galleryYearExpanded">
-                                        <div className="img_grid">
-                                            {photos.map((photo) => (
+                                        <div className="vid_grid">
+                                            {videos.map((video) => (
                                                 <button
                                                     type="button"
-                                                    className="imgWrap"
-                                                    key={photo.id}
+                                                    className="vidWrap"
+                                                    key={video.id}
                                                     onClick={() =>
-                                                        getImg(photo.url)
+                                                        getVid(
+                                                            video.url ||
+                                                            video.vidUrl
+                                                        )
                                                     }
+                                                    aria-label={
+                                                        `Lire une vidéo de ${year}`
+                                                    }
+                                                    style={{
+                                                        padding: 0,
+                                                        cursor: 'pointer',
+                                                        background: 'transparent'
+                                                    }}
                                                 >
-                                                    <img
-                                                        className="imgbox"
-                                                        src={photo.url}
-                                                        alt={`Galerie ${year}`}
-                                                        loading="lazy"
+                                                    <video
+                                                        muted
+                                                        playsInline
+                                                        preload="metadata"
+                                                        className="vidbox"
+                                                        src={
+                                                            video.url ||
+                                                            video.vidUrl
+                                                        }
                                                     />
                                                 </button>
                                             ))}
@@ -197,4 +247,4 @@ function Gallery() {
     )
 }
 
-export default Gallery
+export default Video
