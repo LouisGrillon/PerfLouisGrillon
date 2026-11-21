@@ -1,34 +1,87 @@
 import { useEffect, useState } from 'react'
-import {storage, timestamp, db } from '../Firebase'
-import { ref as storageRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage, timestamp, db } from '../Firebase'
+import {
+    ref as storageRef,
+    uploadBytesResumable,
+    getDownloadURL
+} from 'firebase/storage'
 import { addDoc, collection } from 'firebase/firestore'
 
-function useVidStorage(vidfile) {
-    const [progress, setProgress] = useState(0);
-    const [error, setError] = useState(null);
-    const [vidUrl, setVidUrl] = useState(null);
-   
+function useVidStorage(vidfile, year) {
+    const [progress, setProgress] = useState(0)
+    const [error, setError] = useState(null)
+    const [vidUrl, setVidUrl] = useState(null)
+
     useEffect(() => {
+        if (!vidfile) {
+            return
+        }
 
-        const storageReference = storageRef(storage, vidfile.name);
-        const uploadTask = uploadBytesResumable(storageReference, vidfile);
+        const storageReference = storageRef(
+            storage,
+            vidfile.name
+        )
 
-        uploadTask.on('state_changed', (snap) => {
-            let percent = (snap.bytesTransferred / snap.totalBytes) * 100;
-            setProgress(percent >> 0); // or Math.trunc() 
-        }, (err) => {
-            setError(err);
-        }, async () =>{
-            const vidUrl = await getDownloadURL(storageReference);
-            const createdAt = timestamp;
-            const videoCollectionRef = collection(db, "videos")
-            addDoc(videoCollectionRef, {vidUrl, createdAt})
-            setVidUrl(vidUrl);
-        });
+        const uploadTask = uploadBytesResumable(
+            storageReference,
+            vidfile
+        )
 
-    }, [vidfile]);
+        uploadTask.on(
+            'state_changed',
+            (snap) => {
+                const percent =
+                    (snap.bytesTransferred / snap.totalBytes) * 100
 
-    return {progress, vidUrl, error};
+                setProgress(Math.floor(percent))
+            },
+            (err) => {
+                console.error(err)
+                setError(err)
+            },
+            async () => {
+                try {
+                    const uploadedUrl =
+                        await getDownloadURL(storageReference)
+
+                    const videoData = {
+                        vidUrl: uploadedUrl,
+                        createdAt: timestamp
+                    }
+
+                    // Enregistrer l'année réelle de la vidéo
+                    const selectedYear = Number(year)
+
+                    if (
+                        year != null &&
+                        year !== '' &&
+                        Number.isInteger(selectedYear) &&
+                        selectedYear >= 2006 &&
+                        selectedYear <= new Date().getFullYear()
+                    ) {
+                        videoData.year = selectedYear
+                    }
+
+                    const videoCollectionRef = collection(
+                        db,
+                        'videos'
+                    )
+
+                    await addDoc(
+                        videoCollectionRef,
+                        videoData
+                    )
+
+                    setVidUrl(uploadedUrl)
+                } catch (err) {
+                    console.error(err)
+                    setError(err)
+                }
+            }
+        )
+    }, [vidfile, year])
+
+    return { progress, vidUrl, error }
 }
 
-export default useVidStorage;
+export default useVidStorage
