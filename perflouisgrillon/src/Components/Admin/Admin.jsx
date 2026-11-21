@@ -19,10 +19,15 @@ function Admin() {
     const [file, setFile] = useState(null)
     const [vidfile, setVidFile] = useState(null)
 
-    // Année réelle de prise de vue
     const currentYear = new Date().getFullYear()
+
+    // Année réelle des photos
     const [year, setYear] = useState(currentYear)
     const [selectedYear, setSelectedYear] = useState(null)
+
+    // Année réelle des vidéos
+    const [videoYear, setVideoYear] = useState(currentYear)
+    const [selectedVideoYear, setSelectedVideoYear] = useState(null)
 
     // Rubrique actuellement affichée
     const [activeSection, setActiveSection] = useState('photos')
@@ -49,10 +54,14 @@ function Admin() {
 
         if (selected && vidtypes.includes(selected.type)) {
             setVidFile(selected)
+            setSelectedVideoYear(videoYear)
             setVidError('')
         } else {
             setVidFile(null)
-            setVidError('Please select a file that is a mp4 or webm')
+            setSelectedVideoYear(null)
+            setVidError(
+                'Veuillez sélectionner une vidéo MP4 ou WebM'
+            )
         }
     }
 
@@ -200,28 +209,77 @@ function Admin() {
                     >
                         <h1>Selectionnez une Vidéo</h1>
 
+                        <div style={{ marginBottom: '15px' }}>
+                            <label
+                                htmlFor="videoYear"
+                                style={{
+                                    display: 'block',
+                                    color: 'white',
+                                    marginBottom: '8px'
+                                }}
+                            >
+                                Année réelle de la vidéo
+                            </label>
+
+                            <select
+                                id="videoYear"
+                                value={videoYear}
+                                onChange={(e) =>
+                                    setVideoYear(Number(e.target.value))
+                                }
+                                disabled={Boolean(vidfile)}
+                                style={{
+                                    padding: '10px',
+                                    borderRadius: '6px',
+                                    fontSize: '16px',
+                                    maxWidth: '100%'
+                                }}
+                            >
+                                {Array.from(
+                                    { length: currentYear - 2006 + 1 },
+                                    (_, index) => currentYear - index
+                                ).map((item) => (
+                                    <option
+                                        key={item}
+                                        value={item}
+                                    >
+                                        {item}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
                         <label className="uploadLabel">
                             <input
                                 className="uploadInput"
                                 type="file"
+                                accept="video/mp4,video/webm"
                                 onChange={changeVidHandler}
                                 name="videos"
                                 style={{ color: 'white' }}
+                                disabled={Boolean(vidfile)}
                             />
                             <span className="uploadBtn">+</span>
                         </label>
 
                         <div className="output">
                             {viderror && (
-                                <div className="error">{viderror}</div>
+                                <div className="error">
+                                    {viderror}
+                                </div>
                             )}
 
-                            {vidfile && <div>{vidfile.name}</div>}
+                            {vidfile && (
+                                <div>
+                                    {vidfile.name} — Année : {selectedVideoYear}
+                                </div>
+                            )}
 
                             {vidfile && (
                                 <VidProgressBar
                                     vidfile={vidfile}
                                     setVidFile={setVidFile}
+                                    year={selectedVideoYear}
                                 />
                             )}
                         </div>
