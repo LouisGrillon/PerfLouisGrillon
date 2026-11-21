@@ -4,6 +4,7 @@ import Layout from '../Layout/Layout'
 import ProgressBar from './ProgressBar'
 import VidProgressBar from './VidProgressBar'
 import PhotoPreviewManager from './PhotoPreviewManager'
+import VideoPreviewManager from './VideoPreviewManager'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -65,7 +66,7 @@ function Admin() {
         <>
             <div className="uploadPage">
 
-                {/* Navigation entre les trois rubriques */}
+                {/* Navigation entre les quatre rubriques */}
                 <div
                     style={{
                         display: 'flex',
@@ -80,7 +81,8 @@ function Admin() {
                     {[
                         ['photos', 'Ajouter des photos'],
                         ['videos', 'Ajouter des vidéos'],
-                        ['preview', "Photos d'aperçu"]
+                        ['preview', "Photos d'aperçu"],
+                        ['videoPreview', "Vidéos d'aperçu"]
                     ].map(([section, label]) => (
                         <button
                             key={section}
@@ -229,6 +231,11 @@ function Admin() {
                 {/* Rubrique : Choisir les photos d'aperçu */}
                 {activeSection === 'preview' && (
                     <PhotoPreviewManager />
+                )}
+
+                {/* Rubrique : Choisir les vidéos d'aperçu */}
+                {activeSection === 'videoPreview' && (
+                    <VideoPreviewManager />
                 )}
 
                 <LogoutIcon
