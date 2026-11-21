@@ -1,21 +1,36 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import useVidStorage from '../../hooks/useVidStorage'
 import './Admin.css'
 
-function VidProgressBar({vidfile, setVidFile}) {
-    const {vidUrl, progress} = useVidStorage(vidfile)
-    console.log(progress, vidUrl);
+function VidProgressBar({ vidfile, setVidFile, year }) {
+    const { vidUrl, progress, error } = useVidStorage(
+        vidfile,
+        year
+    )
 
     useEffect(() => {
-        if(vidUrl){
+        if (vidUrl) {
             setVidFile(null)
         }
-    }, [vidUrl])
+    }, [vidUrl, setVidFile])
 
     return (
         <>
-            <span className="progressBar" role="progressbar" style={{width:progress}}></span>
-            <span className="percentage">{progress}%</span>
+            <span
+                className="progressBar"
+                role="progressbar"
+                style={{ width: `${progress}%` }}
+            />
+
+            <span className="percentage">
+                {progress}%
+            </span>
+
+            {error && (
+                <div className="error">
+                    Erreur lors de l'envoi de la vidéo.
+                </div>
+            )}
         </>
     )
 }
