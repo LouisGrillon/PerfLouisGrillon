@@ -1,172 +1,105 @@
-body{overflow-x: hidden;}
 
-.videoPage{
-width: 100vw;
-
+/* Page de la galerie vidéo */
+.videoPage {
+  width: 100%;
+  min-height: 100vh;
 }
 
-
-
-.vid_grid{
+/* Grille des vidéos à l'intérieur d'une année */
+.videoPage .vid_grid {
+  position: relative;
   display: grid;
-  position: absolute;
-  grid-template-columns: repeat(1, fit-content); 
-  grid-template-areas: "vidWrap";
-  -webkit-column-width: 100%;
-  -moz-column-width: 100%;
-  column-width: 100%;
-  width: 80%;
-  margin-left: 40px;
-  padding-bottom: 30%;
-  top: 25%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-.vidWrap{
-  -webkit-transition: all 350ms ease;
-  transition: all 350ms ease;
-  overflow: hidden;
-  justify-content: center;
-  display: flex;
-  height:90%;
-  max-height: 25rem;
-  grid-row:20%;
-}
-
- .vidWrap:hover{
-  filter: opacity(.6);
-  cursor: pointer;
-}
-
-.vidbox{
-  width: auto;
-  height: 100%;
-}
-
-.vidModel{
-  width:100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Conteneur de chaque vidéo */
+.videoPage .vidWrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(0, 0%, 0%) ;
-  transition:  opacity .4s ease, visibility .4s ease, transform .5s ease-in-out ;
+  width: 100%;
+  min-width: 0;
+  height: 300px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: #090909;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 250ms ease;
+}
+
+.videoPage .vidWrap:hover {
+  opacity: 0.75;
+}
+
+.videoPage .vidWrap:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* Vidéos dans la grille */
+.videoPage .vidbox {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  background: #090909;
+}
+
+/* Trois vidéos d'aperçu par année */
+.videoPage .galleryPreviewPhoto video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #080808;
+  transition: transform 350ms ease;
+}
+
+.videoPage .galleryYearSection:hover
+.galleryPreviewPhoto video {
+  transform: scale(1.03);
+}
+
+/* Lecteur vidéo agrandi */
+.videoPage .vidModel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease,
+    transform 0.5s ease-in-out;
   visibility: hidden;
   opacity: 0;
   transform: scale(0);
   overflow: hidden;
-  z-index: 40;
-}
-
-.vidModel.open{
-  visibility: visible;
-  transform:scale(1) ;
-  opacity: 1;
-}
-
-.vidModel video{
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  line-height: 0;
-  box-sizing: border-box;
-  padding:20px 0 20px ;
-  margin: 0 auto;
-}
-
-.vidModel.open svg{
-  position: absolute;
-  top:10px;
-  right: 10px;
-  width: 2rem;
-  height: 2rem;
-  padding: 5px;
-  background-color: hsla(0, 0%, 0%, 0.404);
-  color: hsl(0, 0%, 100%);
-  cursor: pointer;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1179px) {
-  
-  .videoPage{
-    width: 100vw;
-  }
-
-  .vid_grid{
-    position: absolute;
-    grid-template-columns: repeat(2, fit-content); 
-    grid-template-areas: "vidWrap vidWrap";
-    top: 15%;
-    left: 5%;
-    gap: 5%;
-    padding-bottom: 15%;
-  }
-
-} 
-
-@media screen and (min-width: 1180px){
-  
-  .videoPage{
-    width: 100vw;
-    }
-
-  .vid_grid{
-    position: absolute;
-    overflow: hidden;
-    grid-template-columns: repeat(3, fit-content); 
-    grid-template-areas: "vidWrap vidWrap vidWrap";
-    column-gap: 1rem;
-    justify-items: center;
-    top: 15%;
-    left: 7.5%;
-    padding-bottom: 15%;
-  }
-
-
-  .vidWrap{
-   width: 300px;
-  }
-
-}
-
-/* Affichage des vidéos sur téléphone */
-@media screen and (max-width: 767px) {
-  .vid_grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 90%;
-    margin: 100px auto 40px;
-    padding-bottom: 40px;
-    top: auto;
-    gap: 20px;
-  }
-
-  .vidWrap {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    grid-row: auto;
-  }
-
-  .vidbox {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-  }
-}
-
-/* Vidéo agrandie : croix dans le coin de la vidéo */
-.vidModel.open {
   z-index: 200;
 }
 
-.vidModel .mediaContainer {
+.videoPage .vidModel.open {
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Conteneur de la vidéo agrandie */
+.videoPage .vidModel .mediaContainer {
   position: relative;
   display: inline-flex;
   max-width: 100%;
@@ -175,17 +108,21 @@ width: 100vw;
   justify-content: center;
 }
 
-.vidModel .mediaContainer video {
+.videoPage .vidModel .mediaContainer video {
   display: block;
   width: auto;
   height: auto;
   max-width: 100vw;
   max-height: 100vh;
+  max-height: 100dvh;
   object-fit: contain;
   padding: 20px 0;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.vidModel.open .mediaClose {
+/* Croix de fermeture */
+.videoPage .vidModel.open .mediaClose {
   position: absolute;
   top: 25px;
   right: 5px;
@@ -201,43 +138,46 @@ width: 100vw;
   transform: none;
 }
 
-/* Navigation Images / Vidéos sur téléphone */
-@media screen and (max-width: 767px) {
-
-  .videoPage .gallery_Link {
-    position: fixed;
-    top: 20%;
-    left: 33%;
-    width: 33%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    font-size: 4vw;
-    z-index: 0;
-  }
+/* Tablette : deux vidéos par ligne */
+@media screen and (min-width: 768px)
+and (max-width: 1179px) {
 
   .videoPage .vid_grid {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 90%;
-    margin: 220px auto 40px;
-    padding-bottom: 40px;
-    gap: 20px;
-    z-index: 1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
+  .videoPage .vidWrap {
+    height: 220px;
+  }
 }
 
-/* Boutons Images / Vidéos accessibles en paysage */
-@media screen and (max-width: 767px) and (orientation: landscape) {
-  .videoPage .gallery_Link {
-    top: 65px;
-    z-index: 5;
-  }
+/* Téléphone : une vidéo par ligne */
+@media screen and (max-width: 767px) {
 
   .videoPage .vid_grid {
-    margin-top: 125px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .videoPage .vidWrap {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .videoPage .vidbox {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Téléphone en mode paysage */
+@media screen and (max-width: 767px)
+and (orientation: landscape) {
+
+  .videoPage .vid_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 }
